@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/authentication/login/login.component';
@@ -7,6 +7,9 @@ import { ResetPasswordComponent } from './components/authentication/reset-passwo
 import { ForgotPasswordComponent } from './components/authentication/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/authentication/verify-email/verify-email.component';
 import { SignUpComponent } from './components/authentication/sign-up/sign-up.component';
+
+import { MDBBootstrapModule} from 'angular-bootstrap-md'; // Boostrap
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 
 
@@ -17,15 +20,17 @@ import { SignUpComponent } from './components/authentication/sign-up/sign-up.com
     ResetPasswordComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    SignUpComponent
-
+    SignUpComponent,
+    NavBarComponent,
 
   ],
+  schemas: [ NO_ERRORS_SCHEMA ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [NavBarComponent],
 
 })
 export class AppModule { }
