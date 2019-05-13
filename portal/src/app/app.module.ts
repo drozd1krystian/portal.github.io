@@ -10,6 +10,7 @@ import { SignUpComponent } from './components/authentication/sign-up/sign-up.com
 
 import { MDBBootstrapModule} from 'angular-bootstrap-md'; // Boostrap
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { LeftColumnComponent } from './components/left-column/left-column.component';
 
 
 
@@ -22,6 +23,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     VerifyEmailComponent,
     SignUpComponent,
     NavBarComponent,
+    LeftColumnComponent,
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
@@ -30,7 +32,10 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     MDBBootstrapModule.forRoot()
   ],
   providers: [],
-  bootstrap: [NavBarComponent],
+  bootstrap: [
+    NavBarComponent,
+    LeftColumnComponent
+  ],
 
 })
 export class AppModule { }
