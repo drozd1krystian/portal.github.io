@@ -10,8 +10,12 @@ import { SignUpComponent } from './components/authentication/sign-up/sign-up.com
 
 import { MDBBootstrapModule} from 'angular-bootstrap-md'; // Boostrap
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+
+import { LeftColumnComponent } from './components/left-column/left-column.component';
+
 import { UploaderComponent } from './components/uploader/uploader.component';
 import { UploaderTaskComponent } from './components/uploader/uploader-task/uploader-task.component';
+
 
 
 
@@ -24,8 +28,10 @@ import { UploaderTaskComponent } from './components/uploader/uploader-task/uploa
     VerifyEmailComponent,
     SignUpComponent,
     NavBarComponent,
+    LeftColumnComponent,
     UploaderComponent,
     UploaderTaskComponent,
+
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
@@ -34,7 +40,10 @@ import { UploaderTaskComponent } from './components/uploader/uploader-task/uploa
     MDBBootstrapModule.forRoot()
   ],
   providers: [],
-  bootstrap: [NavBarComponent],
+  bootstrap: [
+    NavBarComponent,
+    LeftColumnComponent
+  ],
 
 })
 export class AppModule { }

@@ -1,0 +1,44 @@
+.left-column{
+  width:20%;
+  min-width: 180px;
+  height: 100%;
+  margin-top:20px;
+  margin-left:15px;
+  padding: 20px 0px 15px 5px;
+}
+/* Naglówek sekcji */
+p{
+  color:black;
+  font-weight: 700;
+}
+/* Lista */
+ul{
+  text-decoration: none;
+  padding-inline-start:0px;
+  padding-bottom:20px;
+  li{
+    text-decoration: none;
+    list-style-type: none;
+    display:inline;
+      a{
+        color:black;
+      }
+      &:hover{
+        color:grey;
+      }
+      button{
+        background:none;
+        padding-bottom:10px;
+        border:none;
+        width:100%;
+        text-align:left;
+        &:hover{
+          background-color:rgb(240, 240, 240);
+        }
+        i{
+          margin-right:5px;
+        }
+      }
+  }
+}
+
