@@ -15,6 +15,11 @@ import { LeftColumnComponent } from './components/left-column/left-column.compon
 
 import { UploaderComponent } from './components/uploader/uploader.component';
 import { UploaderTaskComponent } from './components/uploader/uploader-task/uploader-task.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment.prod';
 
 
 
@@ -37,7 +42,11 @@ import { UploaderTaskComponent } from './components/uploader/uploader-task/uploa
   schemas: [ NO_ERRORS_SCHEMA ],
   imports: [
     BrowserModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   providers: [],
   bootstrap: [
