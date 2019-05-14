@@ -53,13 +53,18 @@ Jeśli strona zdobędzie użytkowników, to sama będzie się promować poprzez 
 
 Tutoriale, źródła:
 
-Logowanie:
+Szybki tutorial angulara:
+  - https://angular-templates.io/tutorials/about/learn-angular-from-scratch-step-by-step
 
+Logowanie:
 
   - Logowanie Google Auth: https://fireship.io/lessons/angularfire-google-oauth/ (bad tut)
   
 Crud:
- - https://www.positronx.io/angular-7-firebase-5-crud-operations-with-reactive-forms/
+  - https://www.positronx.io/angular-7-firebase-5-crud-operations-with-reactive-forms/
+
+Crud, Angular Material, Firebase user add/edit/delete, Firebase selecty:
+  - https://angular-templates.io/tutorials/about/angular-crud-with-firebase
 
 
 Obsługa memów:
@@ -68,6 +73,8 @@ Obsługa memów:
 Reszta:
 Zwrócenie użytkownika z Firestore jako Promise: https://fireship.io/snippets/get-angularfire-userid-as-promise/
 
-https://proandroiddev.com/working-with-firestore-building-a-simple-database-model-79a5ce2692cb
+Firebase (Firestore) database model, architektura, dobre praktyki:
 
-https://highlyscalable.wordpress.com/2012/03/01/nosql-data-modeling-techniques/
+  - https://proandroiddev.com/working-with-firestore-building-a-simple-database-model-79a5ce2692cb
+
+  - https://highlyscalable.wordpress.com/2012/03/01/nosql-data-modeling-techniques/

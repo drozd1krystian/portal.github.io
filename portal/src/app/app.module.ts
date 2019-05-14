@@ -10,7 +10,12 @@ import { SignUpComponent } from './components/authentication/sign-up/sign-up.com
 
 import { MDBBootstrapModule} from 'angular-bootstrap-md'; // Boostrap
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+
 import { LeftColumnComponent } from './components/left-column/left-column.component';
+
+import { UploaderComponent } from './components/uploader/uploader.component';
+import { UploaderTaskComponent } from './components/uploader/uploader-task/uploader-task.component';
+
 
 
 
@@ -24,6 +29,9 @@ import { LeftColumnComponent } from './components/left-column/left-column.compon
     SignUpComponent,
     NavBarComponent,
     LeftColumnComponent,
+    UploaderComponent,
+    UploaderTaskComponent,
+
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
