@@ -1,7 +1,7 @@
 <!--Navbar-->
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark blue lighten-1 sticky-top scrolling-navbar" [containerInside]="false">
     <!-- Navbar brand -->
-    <mdb-navbar-brand><a class="navbar-brand" href="#">Portal</a></mdb-navbar-brand>
+    <mdb-navbar-brand><a class="navbar-brand" href="">Portal</a></mdb-navbar-brand>
     <links>
       <!-- LINKS-->
       <ul class = "navbar-nav  mr-auto">
@@ -26,7 +26,7 @@
 
       <ul class = "navbar-nav">
           <li class ="nav-item button active">
-            <button class="btn"><i class="fa fa-folder"></i> Upload</button>
+            <button class="btn"><i class="fa fa-folder"></i> <a [routerLink]="['/upload']" routerLinkActive="router-link-active" >Upload</a></button>
           </li>
       </ul>
     </links>

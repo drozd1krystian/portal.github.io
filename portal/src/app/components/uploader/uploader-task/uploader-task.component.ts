@@ -46,7 +46,7 @@ export class UploaderTaskComponent implements OnInit {
     this.snapshot   = this.task.snapshotChanges().pipe(
       tap(console.log),
       // The file's download URL
-      finalize( async() =>  {
+      finalize( async () =>  {
         this.downloadURL = await ref.getDownloadURL().toPromise();
 // zapis do kolekcji "memy" dokumentu z polami link, id, ocena, tworca
         this.db.collection('memy').add( { link: this.downloadURL, id: path, ocena: 1, tworca: this.tworca, tytul: this.tytul });

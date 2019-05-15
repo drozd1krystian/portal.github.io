@@ -21,6 +21,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment.prod';
 import { MidColumnComponent } from './components/mid-column/mid-column.component';
+import { AppRoutingModule } from './routing/app-routing.module';
+import { MemyComponent } from './components/memy/memy.component';
 
 
 
@@ -38,6 +40,7 @@ import { MidColumnComponent } from './components/mid-column/mid-column.component
     UploaderComponent,
     UploaderTaskComponent,
     MidColumnComponent,
+    MemyComponent,
 
 
   ],
@@ -48,14 +51,11 @@ import { MidColumnComponent } from './components/mid-column/mid-column.component
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, // storage
+    AppRoutingModule
   ],
   providers: [],
-  bootstrap: [
-    NavBarComponent,
-    LeftColumnComponent,
-    MidColumnComponent
-  ],
+  bootstrap: [AppComponent],
 
 })
 export class AppModule { }
