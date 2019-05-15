@@ -78,3 +78,7 @@ Firebase (Firestore) database model, architektura, dobre praktyki:
   - https://proandroiddev.com/working-with-firestore-building-a-simple-database-model-79a5ce2692cb
 
   - https://highlyscalable.wordpress.com/2012/03/01/nosql-data-modeling-techniques/
+
+Responsywny layout:
+
+  - https://medium.com/@tomastrajan/how-to-build-responsive-layouts-with-bootstrap-4-and-angular-6-cfbb108d797b
