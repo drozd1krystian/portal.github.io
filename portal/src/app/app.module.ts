@@ -20,6 +20,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment.prod';
+import { MidColumnComponent } from './components/mid-column/mid-column.component';
 
 
 
@@ -36,6 +37,7 @@ import { environment } from 'src/environments/environment.prod';
     LeftColumnComponent,
     UploaderComponent,
     UploaderTaskComponent,
+    MidColumnComponent,
 
 
   ],
@@ -51,7 +53,8 @@ import { environment } from 'src/environments/environment.prod';
   providers: [],
   bootstrap: [
     NavBarComponent,
-    LeftColumnComponent
+    LeftColumnComponent,
+    MidColumnComponent
   ],
 
 })

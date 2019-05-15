@@ -1,0 +1,64 @@
+/* Kolumna z memem */
+.mid-column{
+  width:640px;
+  height: 100%;
+  margin-top:20px;
+  margin-left:220px;
+  padding: 20px 15px 15px 5px;
+
+  /* Avatar postującego */
+  .avatar{
+    max-width: 20px;
+    max-height: 20px;
+  }
+  .tytul{
+    margin-top:5px;
+    font-weight: 600;
+    font-size: 1.7em;
+  }
+  .dot{
+    font-weight: 700;
+  }
+  .meme{
+    margin-top:10px;
+    width:100%;
+    height:400px;
+    .img-meme{
+      max-width:100%;
+      max-height:100%;
+      height:100%;
+    }
+  }
+  .buttons{
+    width:100%;
+    button{
+    width:50px;
+    height:40px;
+    margin-top:10px;
+    margin-right:10px;
+    background-color:white;
+    outline:none;
+    border:1px solid grey;
+    border-radius: 5px;
+    }
+    .facebook, .twitter{
+      float:right;
+      margin-right:0px;
+      width:110px;
+      color:white;
+    }
+    .facebook{
+      background-color:blue;
+      margin-left:10px;
+    }
+    .twitter{
+      background-color:#1dcaff;
+    }
+  }
+  a{
+    color:black;
+  }
+  a:hover{
+    color:grey;
+  }
+}
