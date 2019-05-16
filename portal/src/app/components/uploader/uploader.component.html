@@ -1,18 +1,22 @@
 
-
-<div class="dropzone"
-     dropzone
-     (hovered)="toggleHover($event)"
-     (dropped)="onDrop($event)"
-     [class.hovering]="isHovering">
+  <div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)"
+    [class.hovering]="isHovering">
 
 
-     <h3>AngularFire Drop Zone</h3>
-     <p>Drag and Drop a File</p>
-</div>
+    <h3>Gimme dat meme lol<br><br>
+      Nazwa pliku nazwą mema
+    </h3>
+    <p>Drag it moron...</p>
+  </div>
 
-<h3>Uploads</h3>
+  <h3>Memy do dodania:</h3>
 
-<div *ngFor="let file of files">
-  <app-uploader-task [file]="file"></app-uploader-task>
-</div>
+  <div *ngFor="let file of files" class="memy">
+    <!-- <app-uploader-task [file]="file"></app-uploader-task> -->
+<button type="button" class="btn btn-primary disabled" ng-click="click()">
+  Press Me Hard
+</button>
+      Uploadnij memsiora!
+
+  </div>
+
