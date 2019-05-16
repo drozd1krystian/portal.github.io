@@ -23,6 +23,7 @@ import { environment } from 'src/environments/environment.prod';
 import { MidColumnComponent } from './components/mid-column/mid-column.component';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { MemyComponent } from './components/memy/memy.component';
+import { DropzoneDirective } from './components/uploader/dropzone.directive';
 
 
 
@@ -41,6 +42,8 @@ import { MemyComponent } from './components/memy/memy.component';
     UploaderTaskComponent,
     MidColumnComponent,
     MemyComponent,
+    DropzoneDirective,
+
 
 
   ],
