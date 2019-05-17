@@ -1,17 +1,14 @@
 <div class ="mid-column">
   <ng-container *ngIf = "infinite | async as memy">
-    <cdk-virtual-scroll-viewport itemSize = "100" (scrolledIndexChange) = "nextBatch($event,(memy[memy.length-1].tworca))">
-      <li *cdkVirtualFor= "let m of memy; trackByIdx">
-        <div class ="post-container">
-
+        <div *ngFor="let m of memy; trackByIdx" class ="post-container"  [style.height.px]="[getSize(m.link)+150]">
           <div class ="opis-posta">
             <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
-            <span class = "nick"> {{m.tworca}}</span> <span class ="dot"> &#183; </span> <span class = "sekcja">{{m.sekcja}}</span>
+            <span> {{m.tworca}}</span> <span class ="dot"> &#183; </span> <span>{{m.sekcja}}</span>
             <br>
             <a href ="#"><span class = "tytul"><strong> {{m.tytul}} </strong></span> </a>
           </div>
 
-          <div class ="post">
+          <div class ="post" [style.height.px]="[getSize(m.link)]">
             <img src = {{m.link}} alt ="">
           </div>
 
@@ -21,11 +18,8 @@
             <button class = "waves light" mdbWavesEffect><i class="far fa-comment-dots"></i> </button>
             <button class = "waves light facebook" mdbWavesEffect><i class="fab fa-facebook-f"></i> Facebook</button>
             <button class = "waves light twitter" mdbWavesEffect><i class="fab fa-twitter"></i> Twitter</button>
-            <hr>
           </div>
-
+          <hr>
         </div>
-      </li>
-    </cdk-virtual-scroll-viewport>
   </ng-container>
 </div>

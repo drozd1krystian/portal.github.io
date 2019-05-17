@@ -4,7 +4,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
 import {map, tap, scan, mergeMap, throttleTime} from 'rxjs/operators';
 
-const batchSize = 20;
 @Component({
   selector: 'app-mid-column',
   templateUrl: './mid-column.component.html',
@@ -16,6 +15,7 @@ export class MidColumnComponent implements OnInit {
   theEnd = false;
   offset = new BehaviorSubject(null);
   infinite: Observable<any[]>;
+
   constructor(private db : AngularFirestore) {
     const batchMap = this.offset.pipe(
       throttleTime(500),
@@ -45,7 +45,7 @@ export class MidColumnComponent implements OnInit {
 
   getBatch(lastSeen: string){
     return this.db.collection('memy', ref =>
-      ref .orderBy('tworca').startAfter(lastSeen).limit(batchSize)
+      ref .orderBy('tworca').startAfter(lastSeen)
     )
     .snapshotChanges()
     .pipe(
@@ -59,6 +59,13 @@ export class MidColumnComponent implements OnInit {
       })
     );
 
+  }
+  getSize(url){
+    const img = new Image();
+    img.src = url;
+    const width = 680;
+    const ratio = width / img.width;
+    return img.height * ratio;
   }
 
   ngOnInit() {

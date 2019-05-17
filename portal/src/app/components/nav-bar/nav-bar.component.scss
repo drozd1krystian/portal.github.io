@@ -1,5 +1,8 @@
-mdb-nav-bar{
+mdb-navbar{
+  position:fixed;
   width:100%;
+  max-width:1196px;
+  margin-top:-60px;
 }
 /* Upload button */
 .btn {
