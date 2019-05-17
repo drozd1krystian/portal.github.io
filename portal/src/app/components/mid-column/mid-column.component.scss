@@ -1,33 +1,38 @@
 /* Kolumna z memem */
-.mid-column{
-  width:640px;
-  height: 100%;
-  margin-top:20px;
-  margin-left:220px;
-  padding: 20px 15px 15px 5px;
 
-  /* Avatar postującego */
-  .avatar{
-    max-width: 20px;
-    max-height: 20px;
-  }
-  .tytul{
-    margin-top:5px;
-    font-weight: 600;
-    font-size: 1.7em;
-  }
-  .dot{
-    font-weight: 700;
-  }
-  .meme{
-    margin-top:10px;
+.mid-column{
+  width:700px;
+  height: 100%;
+  margin-left:220px;
+  margin-top:60px;
+  padding: 20px 15px 15px 5px;
+  .post-container{
     width:100%;
-    height:400px;
-    .img-meme{
-      max-width:100%;
-      max-height:100%;
-      height:100%;
+    margin-bottom:20px;
+  }
+  .opis-posta{
+    height:70px;
+    & img{
+      width:20px;
+      height:20px;
     }
+    a{
+      color:black;
+      &:hover{
+        color:grey;
+      }
+    }
+    .tytul{
+      font-weight: 600;
+      font-size: 1.7em;
+      margin-top:10px;
+    }
+    .dot{
+      font-weight: 600;
+    }
+  }
+  .post img{
+    width:100%;
   }
   .buttons{
     width:100%;
@@ -54,11 +59,5 @@
     .twitter{
       background-color:#1dcaff;
     }
-  }
-  a{
-    color:black;
-  }
-  a:hover{
-    color:grey;
   }
 }

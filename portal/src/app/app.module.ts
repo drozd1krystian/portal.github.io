@@ -22,12 +22,14 @@ import { environment } from 'src/environments/environment.prod';
 import { MidColumnComponent } from './components/mid-column/mid-column.component';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { MemyComponent } from './components/memy/memy.component';
-import { DropzoneDirective } from './components/uploader/file-upload/dropzone.directive';
+import { DropzoneDirective } from './components/uploader/dropzone.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { FileUploadComponent } from './components/uploader/file-upload/file-upload.component';
 import { UploaderComponent } from './components/uploader/uploader/uploader.component';
 
 
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { UploaderComponent } from './components/uploader/uploader/uploader.compo
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
+    BrowserAnimationsModule,
+    ScrollingModule,
     AppRoutingModule,
     FormsModule
   ],
