@@ -13,8 +13,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 import { LeftColumnComponent } from './components/left-column/left-column.component';
 
-import { UploaderComponent } from './components/uploader/uploader.component';
-import { UploaderTaskComponent } from './components/uploader/uploader-task/uploader-task.component';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -23,7 +22,10 @@ import { environment } from 'src/environments/environment.prod';
 import { MidColumnComponent } from './components/mid-column/mid-column.component';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { MemyComponent } from './components/memy/memy.component';
-import { DropzoneDirective } from './components/uploader/dropzone.directive';
+import { DropzoneDirective } from './components/uploader/file-upload/dropzone.directive';
+import { FormsModule } from '@angular/forms';
+import { FileUploadComponent } from './components/uploader/file-upload/file-upload.component';
+import { UploaderComponent } from './components/uploader/uploader/uploader.component';
 
 
 
@@ -38,11 +40,11 @@ import { DropzoneDirective } from './components/uploader/dropzone.directive';
     SignUpComponent,
     NavBarComponent,
     LeftColumnComponent,
-    UploaderComponent,
-    UploaderTaskComponent,
     MidColumnComponent,
     MemyComponent,
     DropzoneDirective,
+    FileUploadComponent,
+    UploaderComponent,
 
 
 
@@ -55,7 +57,8 @@ import { DropzoneDirective } from './components/uploader/dropzone.directive';
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

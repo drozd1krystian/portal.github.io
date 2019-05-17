@@ -4,7 +4,6 @@
   justify-content: center;
   flex-direction: column;
 
-  width: 300px;
   font-weight: 200;
   height: 300px;
   border: 2px dashed #f16624;
@@ -13,23 +12,21 @@
   margin: 0 auto;
 
   &.hovering {
-    border: 2px solid #f16624;
-    color: #dadada !important;
-  }
-
-  .file-label {
-    font-size: 1.2em;
+      border: 2px solid #f16624;
+      color: #dadada !important;
   }
 }
 
-h3 {
+progress::-webkit-progress-value {
+  transition: width 0.1s ease;
+}
+.file{
+
+  margin: 0 auto;
   text-align: center;
 }
-.memy{
-  margin:0 auto;
-  text-align:center;
-}
-.btn{
-  margin: 0 auto;
-  background:#74437e;
+
+.file-input{
+    margin: 0 auto;
+  text-align: center;
 }

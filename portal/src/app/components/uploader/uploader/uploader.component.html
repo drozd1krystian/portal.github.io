@@ -1,0 +1,25 @@
+<br>
+<div class="container">
+    <form (ngSubmit)="toggleChild()" #memeForm="ngForm">
+    <div class="form-group">
+      <label for="name">Podaj nazwe</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="nazwaMema" name="name" #name="ngModel">
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Name is required
+      </div>
+    </div>
+
+
+<div class="form-group">
+  <label for="kategorie">Wybierz kategorie</label>
+  <select class="form-control" id="kategorie" required name="kategorie">
+    <option *ngFor="let kat of kategorie" [value]="kat">{{kat}}</option>
+  </select>
+</div>
+<button type="submit" class="btn btn-success" [disabled]="!memeForm.form.valid">Submit</button>
+
+</form>
+<div>
+  <file-upload [showMePartially]="showVar"></file-upload>
+</div>
+</div>
