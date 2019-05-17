@@ -13,8 +13,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 import { LeftColumnComponent } from './components/left-column/left-column.component';
 
-import { UploaderComponent } from './components/uploader/uploader.component';
-import { UploaderTaskComponent } from './components/uploader/uploader-task/uploader-task.component';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -25,6 +24,10 @@ import { AppRoutingModule } from './routing/app-routing.module';
 import { MemyComponent } from './components/memy/memy.component';
 import { DropzoneDirective } from './components/uploader/dropzone.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { FileUploadComponent } from './components/uploader/file-upload/file-upload.component';
+import { UploaderComponent } from './components/uploader/uploader/uploader.component';
+
 
 import {ScrollingModule} from '@angular/cdk/scrolling';
 
@@ -39,11 +42,11 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     SignUpComponent,
     NavBarComponent,
     LeftColumnComponent,
-    UploaderComponent,
-    UploaderTaskComponent,
     MidColumnComponent,
     MemyComponent,
     DropzoneDirective,
+    FileUploadComponent,
+    UploaderComponent,
 
 
 
@@ -56,8 +59,10 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    AppRoutingModule, BrowserAnimationsModule,
-    ScrollingModule
+    BrowserAnimationsModule,
+    ScrollingModule,
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
