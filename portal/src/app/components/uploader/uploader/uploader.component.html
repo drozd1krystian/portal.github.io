@@ -1,6 +1,6 @@
 <br>
 <div class="container">
-    <form (ngSubmit)="toggleChild()" #memeForm="ngForm">
+    <form (ngSubmit)="toggleChild()" #memeForm="ngForm" >
     <div class="form-group">
       <label for="name">Podaj nazwe</label>
       <input type="text" class="form-control" id="name" required [(ngModel)]="nazwaMema" name="name" #name="ngModel">
@@ -16,7 +16,7 @@
     <option *ngFor="let kat of kategorie" [value]="kat">{{kat}}</option>
   </select>
 </div>
-<button type="submit" class="btn btn-success" [disabled]="!memeForm.form.valid">Submit</button>
+<button type="submit" class="btn btn-success" [disabled]="!memeForm.form.valid" >Submit</button>
 
 </form>
 <div>

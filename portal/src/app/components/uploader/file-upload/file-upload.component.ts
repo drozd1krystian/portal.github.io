@@ -64,8 +64,8 @@ export class FileUploadComponent {
       finalize(async () => {
         this.downloadURL = await ref.getDownloadURL().toPromise();
         // zapis do kolekcji "memy" dokumentu z polami link, id, ocena, tworca
-        if (true) { }
-        this.db.collection('memy').add({ link: this.downloadURL, id: path, ocena: 1 });
+
+        this.db.collection('memy').add({ link: this.downloadURL, id: path, ocena: 32232 });
       }),
     );
   }
