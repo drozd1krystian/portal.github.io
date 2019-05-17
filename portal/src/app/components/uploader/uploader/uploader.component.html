@@ -12,7 +12,7 @@
 
 <div class="form-group">
   <label for="kategorie">Wybierz kategorie</label>
-  <select class="form-control" id="kategorie" required name="kategorie">
+  <select class="form-control" id="kategorie" required [(ngModel)]="wybranaKategoria" name="kategorie">
     <option *ngFor="let kat of kategorie" [value]="kat">{{kat}}</option>
   </select>
 </div>
@@ -20,6 +20,6 @@
 
 </form>
 <div>
-  <file-upload [showMePartially]="showVar"></file-upload>
+  <file-upload [showMePartially]="showVar" [tytul]="nazwaMema" [rodzaj]="wybranaKategoria"></file-upload>
 </div>
 </div>

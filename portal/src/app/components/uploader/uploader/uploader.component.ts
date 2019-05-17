@@ -10,6 +10,7 @@ export class UploaderComponent implements OnInit {
   kategorie = ['Śmieszne', 'Nieśmieszne',
             'Polityka', 'Historyjki'];
   showVar: boolean = false;
+  wybranaKategoria = '';
   toggleChild(){
     this.showVar = !this.showVar;
 }

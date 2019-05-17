@@ -15,7 +15,8 @@ export class FileUploadComponent {
   @Input() showMePartially: boolean;
   // Main task
   task: AngularFireUploadTask;
-
+  @Input() tytul: string;
+  @Input() rodzaj: string;
   // Progress monitoring
   percentage: Observable<number>;
 
@@ -65,7 +66,7 @@ export class FileUploadComponent {
         this.downloadURL = await ref.getDownloadURL().toPromise();
         // zapis do kolekcji "memy" dokumentu z polami link, id, ocena, tworca
 
-        this.db.collection('memy').add({ link: this.downloadURL, id: path, ocena: 32232 });
+        this.db.collection('memy').add({ link: this.downloadURL, id: path, ocena: 32232, tytul: this.tytul, kategoria: this.rodzaj});
       }),
     );
   }
