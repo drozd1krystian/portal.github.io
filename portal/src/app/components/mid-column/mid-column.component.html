@@ -1,17 +1,31 @@
 <div class ="mid-column">
-  <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
-  <span class = "nick"> {{nick}}</span> <span class ="dot"> &#183; </span> <span class = "sekcja">{{sekcja}}</span>
-  <br>
-  <a href ="#"><span class = "tytul"><strong> {{title}} </strong></span> </a>
-  <div class ="meme">
-    <img src = "https://mdbootstrap.com/img/Photos/Slides/img%20(54).jpg" alt ="" class = "img-meme">
-  </div>
-  <div class ="buttons">
-    <button class = "waves light" mdbWavesEffect><i class="fas fa-arrow-up"></i> </button>
-    <button class = "waves light" mdbWavesEffect><i class="fas fa-arrow-down"></i> </button>
-    <button class = "waves light" mdbWavesEffect><i class="far fa-comment-dots"></i> </button>
-    <button class = "waves light facebook" mdbWavesEffect><i class="fab fa-facebook-f"></i> Facebook</button>
-    <button class = "waves light twitter" mdbWavesEffect><i class="fab fa-twitter"></i> Twitter</button>
-    <hr>
-  </div>
+  <ng-container *ngIf = "infinite | async as memy">
+    <cdk-virtual-scroll-viewport itemSize = "100" (scrolledIndexChange) = "nextBatch($event,(memy[memy.length-1].tworca))">
+      <li *cdkVirtualFor= "let m of memy; trackByIdx">
+        <div class ="post-container">
+
+          <div class ="opis-posta">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
+            <span class = "nick"> {{m.tworca}}</span> <span class ="dot"> &#183; </span> <span class = "sekcja">{{m.sekcja}}</span>
+            <br>
+            <a href ="#"><span class = "tytul"><strong> {{m.tytul}} </strong></span> </a>
+          </div>
+
+          <div class ="post">
+            <img src = {{m.link}} alt ="">
+          </div>
+
+          <div class ="buttons">
+            <button class = "waves light" mdbWavesEffect><i class="fas fa-arrow-up"></i> </button>
+            <button class = "waves light" mdbWavesEffect><i class="fas fa-arrow-down"></i> </button>
+            <button class = "waves light" mdbWavesEffect><i class="far fa-comment-dots"></i> </button>
+            <button class = "waves light facebook" mdbWavesEffect><i class="fab fa-facebook-f"></i> Facebook</button>
+            <button class = "waves light twitter" mdbWavesEffect><i class="fab fa-twitter"></i> Twitter</button>
+            <hr>
+          </div>
+
+        </div>
+      </li>
+    </cdk-virtual-scroll-viewport>
+  </ng-container>
 </div>

@@ -24,8 +24,9 @@ import { MidColumnComponent } from './components/mid-column/mid-column.component
 import { AppRoutingModule } from './routing/app-routing.module';
 import { MemyComponent } from './components/memy/memy.component';
 import { DropzoneDirective } from './components/uploader/dropzone.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { DropzoneDirective } from './components/uploader/dropzone.directive';
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    AppRoutingModule
+    AppRoutingModule, BrowserAnimationsModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
