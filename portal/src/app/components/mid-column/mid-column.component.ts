@@ -49,8 +49,8 @@ export class MidColumnComponent implements OnInit {
     )
     .snapshotChanges()
     .pipe(
-      tap(arr =>(arr.length ? null : (this.theEnd = true))),
-      map(arr =>{
+      tap(arr => (arr.length ? null : (this.theEnd = true))),
+      map(arr => {
         return arr.reduce((acc, cur) =>{
           const id = cur.payload.doc.id;
           const data = cur.payload.doc.data();
@@ -63,9 +63,11 @@ export class MidColumnComponent implements OnInit {
   getSize(url){
     const img = new Image();
     img.src = url;
-    const width = 680;
-    const ratio = width / img.width;
+    const maxWidth = 680;
+    if (img.width > maxWidth){
+    const ratio = maxWidth / img.width;
     return img.height * ratio;
+    }
   }
 
   ngOnInit() {
