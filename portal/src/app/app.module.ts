@@ -30,6 +30,7 @@ import { UploaderComponent } from './components/uploader/uploader/uploader.compo
 
 
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { AuthService } from './services/authentication/auth.service';
 
 
 @NgModule({
@@ -64,7 +65,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 
 })
