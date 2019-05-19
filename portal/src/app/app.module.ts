@@ -27,6 +27,8 @@ import { DropzoneDirective } from './components/uploader/dropzone.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { MemComponent } from './components/mem/mem.component';
+import { SekcjaSmieszneComponent } from './components/sekcja-smieszne/sekcja-smieszne.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MidColumnComponent,
     MemyComponent,
     DropzoneDirective,
+    MemComponent,
+    SekcjaSmieszneComponent,
 
 
 
