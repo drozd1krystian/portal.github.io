@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.authService.facebookAuth();
   }
   googleAuth() {
-    this.authService.GoogleAuth();
+    this.authService.googleAuth();
   }
 
 

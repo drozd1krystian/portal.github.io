@@ -1,44 +1,52 @@
-<div class="container">
-  <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
-    <div class="form-group">
-      <label for="name">Podaj email</label>
-      <input ngModel type="email" class="form-control" id="email" required name="email" #email="ngModel">
-      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-        Email is required
-      </div>
-    </div>
+<br>
+<form class="text-center border border-light p-5" (ngSubmit)="login(loginForm)" #loginForm="ngForm">
 
+  <p class="h4 mb-4">Logowanie</p>
 
-    <div class="form-group">
-      <label for="password">Podaj haslo</label>
-      <input ngModel type="password" class="form-control" id="password" required name="password" #password="ngModel">
-      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-        Password is required
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Zaloguj sie</button>
-    <label>Nie masz konta?</label>
-    <button type="button" class="btn btn-primary" [routerLink]="['/signup']"
-      routerLinkActive="router-link-active">Zarejestruj sie!</button>
-    <!-- Calling GoogleAuth Api from AuthService -->
-    <div class="formGroup">
-      <button type="button" class="btn googleBtn" (click)="googleAuth()">
-        <i class="fab fa-google-plus-g"></i>
-        Log in with Google
-      </button>
-    </div>
-
-<!-- Continue with Facebook -->
-<div class="formGroup">
-  <button type="button" class="btn facebookBtn" (click)="facebookAuth()">
-  <i class="fab fa-facebook"></i>
-  Continue with Facebook
-  </button>
+  <!-- Email -->
+  <input  ngModel [email]="true" type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" id="email"
+    required name="email" #email="ngModel">
+  <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+    Podaj poprawny adres e-mail.
   </div>
 
-    <div class="forgotPassword">
-      <span routerLink="/forgot-password">Forgot Password?</span>
-    </div>
-  </form>
+  <!-- Password -->
+  <input ngModel type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password"
+    id="password" required name="password" #password="ngModel">
+  <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+    Hasło jest wymagane.
+  </div>
 
-</div>
+
+  <div class="d-flex justify-content-around">
+
+    <div>
+      <!-- Forgot password -->
+      <a [routerLink]="['/forgotPassword']" routerLinkActive="router-link-active">Zapomniałeś hasła?</a>
+    </div>
+  </div>
+
+  <!-- Sign in button -->
+  <button mdbBtn color="info" block="true" class="dark blue lighten-1" type="submit" [disabled]="!loginForm.form.valid">Zaloguj
+    się</button>
+
+  <!-- Register -->
+  <p>Nie masz konta?
+    <a [routerLink]="['/signup']" routerLinkActive="router-link-active">Zarejestruj się</a>
+  </p>
+
+  <!-- Social login -->
+  <p>lub zaloguj się z:</p>
+
+  <a type="button" class="light-blue-text  btn-lg" (click)="facebookAuth()">
+
+    <mdb-icon fab icon="facebook"></mdb-icon>
+  </a>
+  <a type="button" class="light-blue-text  btn-lg">
+
+    <mdb-icon fab icon="google-plus"></mdb-icon>
+  </a>
+
+
+</form>
+<!-- Default form login -->

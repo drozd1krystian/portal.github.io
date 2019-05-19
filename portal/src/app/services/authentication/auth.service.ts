@@ -41,7 +41,7 @@ logged in and setting up null when logged out */
 
 
     }).catch((error) => {
-      window.alert(error.message);
+      window.alert('Podano nieprawidłowy email/hasło.');
     });
 
   }
@@ -58,6 +58,7 @@ logged in and setting up null when logged out */
       this.router.navigate(['/']);
     }).catch(err => {
       console.log(err);
+      window.alert(err);
     });
 
   }
@@ -70,7 +71,7 @@ logged in and setting up null when logged out */
   }
 
   // Sign in with Google
-  GoogleAuth() {
+  googleAuth() {
     return this.authLogin(new auth.GoogleAuthProvider());
   }
 
@@ -92,7 +93,7 @@ logged in and setting up null when logged out */
   async forgotPassword(passwordResetEmail) {
     try {
       await this.angularFire.auth.sendPasswordResetEmail(passwordResetEmail);
-      window.alert('Password reset email sent, check your inbox.');
+      window.alert('Wysłano instrukcję resetowania hasła. Sprawdź e-mail');
     } catch (error) {
       window.alert(error);
     }
