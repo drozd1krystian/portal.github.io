@@ -27,11 +27,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { FileUploadComponent } from './components/uploader/file-upload/file-upload.component';
 import { UploaderComponent } from './components/uploader/uploader/uploader.component';
-
-
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { MemComponent } from './components/mem/mem.component';
+import { SekcjaSmieszneComponent } from './components/sekcja-smieszne/sekcja-smieszne.component';
 import { AuthService } from './services/authentication/auth.service';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
 
 
 @NgModule({
@@ -47,11 +48,11 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     MidColumnComponent,
     MemyComponent,
     DropzoneDirective,
+    MemComponent,
+    SekcjaSmieszneComponent,
     FileUploadComponent,
     UploaderComponent,
     UserProfileComponent,
-
-
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],

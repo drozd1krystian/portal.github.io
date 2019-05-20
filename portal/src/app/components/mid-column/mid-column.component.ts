@@ -1,8 +1,10 @@
+import { MemComponent } from './../mem/mem.component';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
 import {map, tap, scan, mergeMap, throttleTime} from 'rxjs/operators';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-mid-column',
@@ -16,7 +18,7 @@ export class MidColumnComponent implements OnInit {
   offset = new BehaviorSubject(null);
   infinite: Observable<any[]>;
 
-  constructor(private db : AngularFirestore) {
+  constructor(public db: AngularFirestore) {
     const batchMap = this.offset.pipe(
       throttleTime(500),
       mergeMap(n => this.getBatch(n)),
@@ -60,6 +62,9 @@ export class MidColumnComponent implements OnInit {
     );
 
   }
+  ngOnInit() {
+  }
+
   getSize(url){
     const img = new Image();
     img.src = url;
@@ -69,9 +74,4 @@ export class MidColumnComponent implements OnInit {
     return img.height * ratio;
     }
   }
-
-  ngOnInit() {
-
-  }
-
 }

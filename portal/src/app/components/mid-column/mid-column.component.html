@@ -1,25 +1,11 @@
 <div class ="mid-column">
   <ng-container *ngIf = "infinite | async as memy">
-        <div *ngFor="let m of memy; trackByIdx" class ="post-container"  [style.height.px]="[getSize(m.link)+150]">
-          <div class ="opis-posta">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
-            <span> {{m.tworca}}</span> <span class ="dot"> &#183; </span> <span>{{m.sekcja}}</span>
-            <br>
-            <a href ="#"><span class = "tytul"><strong> {{m.tytul}} </strong></span> </a>
-          </div>
-
-          <div class ="post" [style.height.px]="[getSize(m.link)]">
-            <img src = {{m.link}} alt ="">
-          </div>
-
-          <div class ="buttons">
-            <button class = "waves light" mdbWavesEffect><i class="fas fa-arrow-up"></i> </button>
-            <button class = "waves light" mdbWavesEffect><i class="fas fa-arrow-down"></i> </button>
-            <button class = "waves light" mdbWavesEffect><i class="far fa-comment-dots"></i> </button>
-            <button class = "waves light facebook" mdbWavesEffect><i class="fab fa-facebook-f"></i> Facebook</button>
-            <button class = "waves light twitter" mdbWavesEffect><i class="fab fa-twitter"></i> Twitter</button>
-          </div>
-          <hr>
+       <div *ngFor="let m of memy; trackByIdx" class ="post-container"  [style.height.px]="[getSize(m.link)+ 150]">
+         <app-mem [memTworca] = "m.tworca" [memKategoria] = "m.kategoria" [memLink] = "m.link"
+                   [memTytul] = "m.tytul">
+          </app-mem>
         </div>
   </ng-container>
+  <app-sekcja-smieszne></app-sekcja-smieszne>
 </div>
+

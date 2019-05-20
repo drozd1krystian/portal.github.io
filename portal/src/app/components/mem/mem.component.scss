@@ -1,0 +1,50 @@
+.opis-posta{
+  height:70px;
+  & img{
+    width:20px;
+    height:20px;
+  }
+  a{
+    color:black;
+    &:hover{
+      color:grey;
+    }
+  }
+  .tytul{
+    font-weight: 600;
+    font-size: 1.7em;
+    margin-top:10px;
+  }
+  .dot{
+    font-weight: 600;
+  }
+}
+.post img{
+  max-width: 100%;
+}
+.buttons{
+  width:100%;
+  button{
+  width:50px;
+  height:40px;
+  margin-top:10px;
+  margin-right:10px;
+  background-color:white;
+  outline:none;
+  border:1px solid grey;
+  border-radius: 5px;
+  }
+  .facebook, .twitter{
+    float:right;
+    margin-right:0px;
+    width:110px;
+    color:white;
+  }
+  .facebook{
+    background-color:blue;
+    margin-left:10px;
+  }
+  .twitter{
+    background-color:#1dcaff;
+  }
+}
