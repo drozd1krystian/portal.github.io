@@ -1,25 +1,53 @@
-<div class="container">
-  <form (ngSubmit)="signup(signupForm)" #signupForm="ngForm" >
-  <div class="form-group">
-    <label for="name">Podaj email</label>
-    <input ngModel type="email" class="form-control" id="email" required  name="email" #email="ngModel">
-    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-      Email is required
-    </div>
-  </div>
 
 
-  <div class="form-group">
-    <label for="password">Podaj haslo</label>
-    <input ngModel type="password" class="form-control" id="password" required  name="password" #password="ngModel">
-    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-      Password is required
-    </div>
+
+<br>
+<form class="text-center border border-light p-5" (ngSubmit)="signup(signupForm)" #signupForm="ngForm">
+
+  <p class="h4 mb-4">Rejestracja</p>
+
+  <!-- Email -->
+  <input  ngModel [email]="true" type="email"  class="form-control mb-4" placeholder="E-mail" id="email"
+    required name="email" #email="ngModel">
+  <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+    Podaj poprawny adres e-mail.
   </div>
-<button type="submit" class="btn btn-primary" [disabled]="!signupForm.form.valid" >Zarejestruj sie</button>
-<label>Masz juz konto?</label>
-<button type="button" class="btn btn-primary" [routerLink]="['/login']" routerLinkActive="router-link-active">Zaloguj sie!</button>
+
+  <!-- Password -->
+  <input ngModel minlength="6" type="password"  class="form-control mb-4" placeholder="Password"
+    id="password" required name="password" #password="ngModel">
+
+  <div [hidden]="password.valid" class="alert alert-danger">
+      Hasło nie spełnia wymagań. Podaj hasło o długości minimum 6 znaków.
+    </div>
+
+
+
+  <!-- Sign up button -->
+  <button mdbBtn color="info" block="true" class="dark blue lighten-1" type="submit" [disabled]="!signupForm.form.valid">Zarejestruj się</button>
+
+    <!-- Login -->
+    <p>Masz już konto?
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active">Zaloguj się</a>
+      </p>
+
+  <!-- Social login -->
+  <p>lub zaloguj się z:</p>
+
+  <a type="button" class="light-blue-text  btn-lg" (click)="this.authService.facebookAuth()">
+
+    <mdb-icon fab icon="facebook"></mdb-icon>
+  </a>
+  <a type="button" class="light-blue-text  btn-lg" (click)="this.authService.googleAuth()">
+
+    <mdb-icon fab icon="google-plus"></mdb-icon>
+  </a>
+
 
 </form>
 
-</div>
+
+
+
+
+

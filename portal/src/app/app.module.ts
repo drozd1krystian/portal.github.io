@@ -31,6 +31,7 @@ import { UploaderComponent } from './components/uploader/uploader/uploader.compo
 
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { AuthService } from './services/authentication/auth.service';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { AuthService } from './services/authentication/auth.service';
     DropzoneDirective,
     FileUploadComponent,
     UploaderComponent,
+    UserProfileComponent,
 
 
 

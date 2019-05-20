@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

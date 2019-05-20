@@ -18,5 +18,12 @@ export class LoginComponent implements OnInit {
     this.authService.login(formData.value.email, formData.value.password);
   }
 
+  facebookAuth() {
+    this.authService.facebookAuth();
+  }
+  googleAuth() {
+    this.authService.googleAuth();
+  }
+
 
 }
