@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { finalize, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/authentication/auth.service';
+import { Router } from '@angular/router';
 
 
 
@@ -30,9 +31,9 @@ export class FileUploadComponent {
   // State for dropzone CSS toggling
   isHovering: boolean;
 
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private authService: AuthService) {
+  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private authService: AuthService, private router: Router) {
 
-   }
+  }
 
 
   toggleHover(event: boolean) {
@@ -74,11 +75,18 @@ export class FileUploadComponent {
         this.db.collection('memy').add({
           link: this.downloadURL,
           id: path,
-          ocena: 32232,
+          ocena: 1,
           tytul: this.tytul,
           kategoria: this.rodzaj,
           tworca: this.authService.userData.displayName,
-          dataDodania: new Date()
+          dataDodania: new Date(),
+          awatarTworcy: this.authService.userData.photoURL
+        }).then(value => {
+          window.alert('Upload zakończony sukcesem!');
+          this.router.navigate(['/']);
+        }).catch(value => {
+          window.alert('Upload zakończony niepowodzeniem!');
+          this.router.navigate(['/']);
         });
       }),
     );
