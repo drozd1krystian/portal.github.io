@@ -69,6 +69,7 @@ Crud, Angular Material, Firebase user add/edit/delete, Firebase selecty:
 
 Obsługa memów:
   - Dropbox + upload wielu memów jednocześnie: https://fireship.io/lessons/angular-firebase-storage-uploads-multi/
+  - dropbox - jeden mem + wybieranie ręczne pliku https://angularfirebase.com/lessons/firebase-storage-with-angularfire-dropzone-file-uploader/
   
 Reszta:
 Zwrócenie użytkownika z Firestore jako Promise: https://fireship.io/snippets/get-angularfire-userid-as-promise/
@@ -82,3 +83,6 @@ Firebase (Firestore) database model, architektura, dobre praktyki:
 Responsywny layout:
 
   - https://medium.com/@tomastrajan/how-to-build-responsive-layouts-with-bootstrap-4-and-angular-6-cfbb108d797b
+
+Wyswietlenie komponentu po kliknieciu buttona (przydatne do dropboxa)
+https://stackoverflow.com/questions/44264354/display-a-component-after-a-clickevent-angular-4

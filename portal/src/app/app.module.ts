@@ -13,8 +13,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 import { LeftColumnComponent } from './components/left-column/left-column.component';
 
-import { UploaderComponent } from './components/uploader/uploader.component';
-import { UploaderTaskComponent } from './components/uploader/uploader-task/uploader-task.component';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -23,12 +22,17 @@ import { environment } from 'src/environments/environment.prod';
 import { MidColumnComponent } from './components/mid-column/mid-column.component';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { MemyComponent } from './components/memy/memy.component';
-import { DropzoneDirective } from './components/uploader/dropzone.directive';
+import { DropzoneDirective } from './components/uploader/file-upload/dropzone.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule } from '@angular/forms';
+import { FileUploadComponent } from './components/uploader/file-upload/file-upload.component';
+import { UploaderComponent } from './components/uploader/uploader/uploader.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { MemComponent } from './components/mem/mem.component';
 import { SekcjaSmieszneComponent } from './components/sekcja-smieszne/sekcja-smieszne.component';
+import { AuthService } from './services/authentication/auth.service';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
 
 
 @NgModule({
@@ -41,15 +45,14 @@ import { SekcjaSmieszneComponent } from './components/sekcja-smieszne/sekcja-smi
     SignUpComponent,
     NavBarComponent,
     LeftColumnComponent,
-    UploaderComponent,
-    UploaderTaskComponent,
     MidColumnComponent,
     MemyComponent,
     DropzoneDirective,
     MemComponent,
     SekcjaSmieszneComponent,
-
-
+    FileUploadComponent,
+    UploaderComponent,
+    UserProfileComponent,
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
@@ -60,10 +63,12 @@ import { SekcjaSmieszneComponent } from './components/sekcja-smieszne/sekcja-smi
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    AppRoutingModule, BrowserAnimationsModule,
-    ScrollingModule
+    BrowserAnimationsModule,
+    ScrollingModule,
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 
 })
