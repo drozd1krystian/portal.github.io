@@ -10,7 +10,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class SekcjaNajlepszeComponent implements OnInit {
 
   theEnd = false;
-  memy = this.db.collection('memy', ref => ref.orderBy('dataDodania').where('ocena', '>=', '100')).valueChanges();
+  ocena = 100;
+  memy = this.db.collection('memy', ref => ref.orderBy('ocena').
+  orderBy('dataDodania', 'desc').where('ocena', '>=', this.ocena)).valueChanges();
 
   constructor(private db: AngularFirestore, public mem: MidColumnComponent) {
 

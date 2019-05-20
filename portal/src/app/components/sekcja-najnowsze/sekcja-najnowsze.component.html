@@ -1,3 +1,4 @@
+<app-left-column></app-left-column>
 <div class ="mid-column">
     <ng-container *ngIf = "memy | async as memy">
         <div *ngFor="let m of memy; trackByIdx" class ="post-container" [style.height.px]="[mem.getSize(m.link)+ 150]">

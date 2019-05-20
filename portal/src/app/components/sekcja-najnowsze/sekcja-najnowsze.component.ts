@@ -11,7 +11,8 @@ export class SekcjaNajnowszeComponent implements OnInit {
 
   theEnd = false;
   todaysDate = new Date();
-  memy = this.db.collection('memy', ref => ref.orderBy('dataDodania').where('dataDodania', '>=', 'todaysDate')).valueChanges();
+  data = new Date(this.todaysDate.setDate(this.todaysDate.getDate() - 7));
+  memy = this.db.collection('memy', ref => ref.orderBy('dataDodania').where('dataDodania', '>=', this.data)).valueChanges();
 
   constructor(private db: AngularFirestore, public mem: MidColumnComponent) {
    }

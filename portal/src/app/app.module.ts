@@ -80,7 +80,7 @@ import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-n
     AppRoutingModule,
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, MidColumnComponent],
   bootstrap: [AppComponent],
 
 })
