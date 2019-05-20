@@ -47,7 +47,7 @@ export class MidColumnComponent implements OnInit {
 
   getBatch(lastSeen: string){
     return this.db.collection('memy', ref =>
-      ref .orderBy('tworca').startAfter(lastSeen)
+      ref .orderBy('dataDodania').startAfter(lastSeen)
     )
     .snapshotChanges()
     .pipe(

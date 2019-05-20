@@ -11,6 +11,7 @@ export class MemComponent implements OnInit {
   @Input() memKategoria: string;
   @Input() memLink: string;
   @Input() memTytul: string;
+  @Input() memOcena: string;
   constructor() {
 
    }
