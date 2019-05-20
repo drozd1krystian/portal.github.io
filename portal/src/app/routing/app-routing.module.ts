@@ -14,16 +14,18 @@ import { SignUpComponent } from '../components/authentication/sign-up/sign-up.co
 import { ForgotPasswordComponent } from '../components/authentication/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from '../components/authentication/verify-email/verify-email.component';
 import { UserProfileComponent } from '../components/user-profile/user-profile.component';
+import { CanActivate } from '@angular/router/src/utils/preactivation';
+import { AuthGuardService } from '../services/authorization/auth.guard.service';
 
 
 const routes: Routes = [
   { path: '', component: MemyComponent },
-  { path: 'upload', component: UploaderComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignUpComponent },
+  { path: 'upload', component: UploaderComponent, canActivate: [AuthGuardService] },
+  { path: 'login', component: LoginComponent, canActivate: [!AuthGuardService] },
+  { path: 'signup', component: SignUpComponent, canActivate: [!AuthGuardService] },
   { path: 'forgotPassword', component: ForgotPasswordComponent},
   { path: 'verifyEmail', component: VerifyEmailComponent},
-  { path: 'user-profile', component: UserProfileComponent},
+  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuardService]},
   // { path: '**', component: PageNotFoundComponent },
   { path: 'smieszne', component: SekcjaSmieszneComponent},
   { path: 'najlepsze', component: SekcjaNajlepszeComponent},

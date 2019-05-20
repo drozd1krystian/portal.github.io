@@ -38,6 +38,7 @@ import { SekcjaHistoryjkiComponent } from './components/sekcja-historyjki/sekcja
 import { SekcjaNiesmieszneComponent } from './components/sekcja-niesmieszne/sekcja-niesmieszne.component';
 import { SekcjaNajlepszeComponent } from './components/sekcja-najlepsze/sekcja-najlepsze.component';
 import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-najnowsze.component';
+import {AuthGuardService} from './services/authorization/auth.guard.service';
 
 
 
@@ -80,7 +81,7 @@ import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-n
     AppRoutingModule,
     FormsModule
   ],
-  providers: [AuthService, MidColumnComponent],
+  providers: [AuthService, MidColumnComponent, AuthGuardService],
   bootstrap: [AppComponent],
 
 })

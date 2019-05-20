@@ -12,6 +12,7 @@ export class MemComponent implements OnInit {
   @Input() memLink: string;
   @Input() memTytul: string;
   @Input() memOcena: string;
+  @Input() awatarTworcy: string;
   constructor() {
 
    }
