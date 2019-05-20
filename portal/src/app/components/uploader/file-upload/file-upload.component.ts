@@ -3,6 +3,7 @@ import { AngularFireUploadTask, AngularFireStorage } from '@angular/fire/storage
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { finalize, tap } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 
 
 
@@ -20,6 +21,7 @@ export class FileUploadComponent {
   // Progress monitoring
   percentage: Observable<number>;
 
+
   snapshot: Observable<any>;
 
   // Download URL
@@ -28,7 +30,9 @@ export class FileUploadComponent {
   // State for dropzone CSS toggling
   isHovering: boolean;
 
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
+  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private authService: AuthService) {
+
+   }
 
 
   toggleHover(event: boolean) {
@@ -38,11 +42,11 @@ export class FileUploadComponent {
 
   async startUpload(event: FileList) {
     // The File object
-    const file = event.item(0)
+    const file = event.item(0);
 
     // Client-side validation example
     if (file.type.split('/')[0] !== 'image') {
-      console.error('unsupported file type :( ')
+      console.error('unsupported file type :( ');
       return;
     }
 
@@ -53,7 +57,7 @@ export class FileUploadComponent {
     const customMetadata = { app: 'My AngularFire-powered PWA!' };
 
     // The main task
-    this.task = this.storage.upload(path, file, { customMetadata })
+    this.task = this.storage.upload(path, file, { customMetadata });
 
     // Progress monitoring
     this.percentage = this.task.percentageChanges();
@@ -66,14 +70,23 @@ export class FileUploadComponent {
         this.downloadURL = await ref.getDownloadURL().toPromise();
         // zapis do kolekcji "memy" dokumentu z polami link, id, ocena, tworca
 
-        this.db.collection('memy').add({ link: this.downloadURL, id: path, ocena: 32232, tytul: this.tytul, kategoria: this.rodzaj});
+        // tslint:disable-next-line: max-line-length
+        this.db.collection('memy').add({
+          link: this.downloadURL,
+          id: path,
+          ocena: 32232,
+          tytul: this.tytul,
+          kategoria: this.rodzaj,
+          tworca: this.authService.userData.displayName,
+          dataDodania: new Date()
+        });
       }),
     );
   }
 
   // Determines if the upload task is active
   isActive(snapshot) {
-    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes
+    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
   }
 
 }
