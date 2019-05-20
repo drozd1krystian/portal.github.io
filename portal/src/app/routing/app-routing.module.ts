@@ -1,3 +1,10 @@
+import { SekcjaZwierzetaComponent } from './../components/sekcja-zwierzeta/sekcja-zwierzeta.component';
+import { PolitykaComponent } from './../components/polityka/polityka.component';
+import { SekcjaHistoryjkiComponent } from './../components/sekcja-historyjki/sekcja-historyjki.component';
+import { SekcjaNiesmieszneComponent } from './../components/sekcja-niesmieszne/sekcja-niesmieszne.component';
+import { SekcjaNajnowszeComponent } from './../components/sekcja-najnowsze/sekcja-najnowsze.component';
+import { SekcjaNajlepszeComponent } from './../components/sekcja-najlepsze/sekcja-najlepsze.component';
+import { SekcjaSmieszneComponent } from './../components/sekcja-smieszne/sekcja-smieszne.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MemyComponent } from '../components/memy/memy.component';
@@ -7,7 +14,7 @@ import { SignUpComponent } from '../components/authentication/sign-up/sign-up.co
 import { ForgotPasswordComponent } from '../components/authentication/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from '../components/authentication/verify-email/verify-email.component';
 import { UserProfileComponent } from '../components/user-profile/user-profile.component';
-import {SekcjaSmieszneComponent} from '../components/sekcja-smieszne/sekcja-smieszne.component';
+
 
 const routes: Routes = [
   { path: '', component: MemyComponent },
@@ -19,6 +26,12 @@ const routes: Routes = [
   { path: 'user-profile', component: UserProfileComponent},
   // { path: '**', component: PageNotFoundComponent },
   { path: 'smieszne', component: SekcjaSmieszneComponent},
+  { path: 'najlepsze', component: SekcjaNajlepszeComponent},
+  { path: 'najnowsze', component: SekcjaNajnowszeComponent},
+  { path: 'niesmieszne', component: SekcjaNiesmieszneComponent},
+  { path: 'historyjki', component: SekcjaHistoryjkiComponent},
+  { path: 'polityka', component: PolitykaComponent},
+  { path: 'zwierzeta', component: SekcjaZwierzetaComponent},
 ];
 
 @NgModule({

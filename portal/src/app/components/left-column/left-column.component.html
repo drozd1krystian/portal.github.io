@@ -12,16 +12,11 @@
 
   <p>Sekcje</p>
   <ul>
-    <li>
-        <button [routerLink]="['smieszne']" routerLinkActive="router-link-active" class="waves-effect"  mdbWavesEffect><i class="far fa-smile-wink" ></i> Śmieszne</button>
-    </li>
-    <li>
-        <button class="waves-effect"  mdbWavesEffect><i class="fas fa-paw" ></i>Zwierzęta</button>
-    </li>
-    <li>
-        <button class="waves-effect"  mdbWavesEffect> <i class="far fa-grin-tongue"></i> Dowcip</button>
+    <li *ngFor="let s of sekcje">
+        <button [routerLink]="[s.link]" routerLinkActive="router-link-active" class="waves-effect"  mdbWavesEffect><i class={{s.ikona}} ></i> {{s.sekcja}}</button>
     </li>
   </ul>
 </div>
+
 
 

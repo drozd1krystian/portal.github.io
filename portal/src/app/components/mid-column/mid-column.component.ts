@@ -65,7 +65,7 @@ export class MidColumnComponent implements OnInit {
   ngOnInit() {
   }
 
-  getSize(url){
+  public getSize(url) {
     const img = new Image();
     img.src = url;
     const maxWidth = 680;

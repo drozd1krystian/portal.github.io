@@ -21,13 +21,16 @@
 }
 .post img{
   max-width: 100%;
+  display:block;
+  margin:0 auto;
 }
 .buttons{
-  width:100%;
+  width:630px;
+  margin-top:0px;
   button{
   width:50px;
   height:40px;
-  margin-top:5px;
+  margin-top:0px;
   margin-right:10px;
   background-color:white;
   outline:none;
@@ -41,10 +44,14 @@
     color:white;
   }
   .facebook{
-    background-color:blue;
+    background-color:#3b5998;
     margin-left:10px;
   }
   .twitter{
-    background-color:#1dcaff;
+    background-color:#0084b4;
+  }
+  p{
+    margin-top:20px;
+    margin-bottom:2px;
   }
 }

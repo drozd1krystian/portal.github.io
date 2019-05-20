@@ -29,5 +29,9 @@ export class MemComponent implements OnInit {
     return img.height * ratio;
     }
   }
-
+  public getWidth(url) {
+    const img = new Image();
+    img.src = url;
+    return img.width;
+    }
 }

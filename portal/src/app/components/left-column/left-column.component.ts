@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./left-column.component.scss']
 })
 export class LeftColumnComponent implements OnInit {
-
-  constructor() { }
+  sekcje = [
+    {sekcja: 'Śmieszne', link: 'smieszne', ikona: 'far fa-grin-squint'},
+    {sekcja: 'Zwierzęta', link: 'zwierzeta', ikona: 'fas fa-paw'},
+    {sekcja: 'Polityka', link: 'polityka',  ikona: 'fab fa-old-republic'},
+    {sekcja: 'Nieśmieszne', link: 'niesmieszne', ikona: ' far fa-frown-open'},
+    {sekcja: 'Historyjki', link: 'dowcip', ikona: 'far fa-smile-wink'},
+  ];
+  constructor() {
+   }
 
   ngOnInit() {
+
   }
 
 }

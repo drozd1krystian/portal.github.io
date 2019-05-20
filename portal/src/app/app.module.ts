@@ -32,6 +32,12 @@ import { MemComponent } from './components/mem/mem.component';
 import { SekcjaSmieszneComponent } from './components/sekcja-smieszne/sekcja-smieszne.component';
 import { AuthService } from './services/authentication/auth.service';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { SekcjaZwierzetaComponent } from './components/sekcja-zwierzeta/sekcja-zwierzeta.component';
+import { PolitykaComponent } from './components/polityka/polityka.component';
+import { SekcjaHistoryjkiComponent } from './components/sekcja-historyjki/sekcja-historyjki.component';
+import { SekcjaNiesmieszneComponent } from './components/sekcja-niesmieszne/sekcja-niesmieszne.component';
+import { SekcjaNajlepszeComponent } from './components/sekcja-najlepsze/sekcja-najlepsze.component';
+import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-najnowsze.component';
 
 
 
@@ -53,6 +59,12 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     FileUploadComponent,
     UploaderComponent,
     UserProfileComponent,
+    SekcjaZwierzetaComponent,
+    PolitykaComponent,
+    SekcjaHistoryjkiComponent,
+    SekcjaNiesmieszneComponent,
+    SekcjaNajlepszeComponent,
+    SekcjaNajnowszeComponent,
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
