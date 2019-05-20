@@ -7,6 +7,7 @@ import { SignUpComponent } from '../components/authentication/sign-up/sign-up.co
 import { ForgotPasswordComponent } from '../components/authentication/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from '../components/authentication/verify-email/verify-email.component';
 import { UserProfileComponent } from '../components/user-profile/user-profile.component';
+import {SekcjaSmieszneComponent} from '../components/sekcja-smieszne/sekcja-smieszne.component';
 
 const routes: Routes = [
   { path: '', component: MemyComponent },
@@ -15,8 +16,9 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'forgotPassword', component: ForgotPasswordComponent},
   { path: 'verifyEmail', component: VerifyEmailComponent},
-  { path: 'user-profile', component: UserProfileComponent}
+  { path: 'user-profile', component: UserProfileComponent},
   // { path: '**', component: PageNotFoundComponent },
+  { path: 'smieszne', component: SekcjaSmieszneComponent},
 ];
 
 @NgModule({
