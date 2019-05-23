@@ -39,6 +39,8 @@ import { SekcjaNiesmieszneComponent } from './components/sekcja-niesmieszne/sekc
 import { SekcjaNajlepszeComponent } from './components/sekcja-najlepsze/sekcja-najlepsze.component';
 import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-najnowsze.component';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+import {AuthGuardService} from './services/authorization/auth.guard.service';
+
 
 
 @NgModule({
@@ -81,7 +83,7 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
     FormsModule,
     JwSocialButtonsModule
   ],
-  providers: [AuthService, MidColumnComponent],
+  providers: [AuthService, MidColumnComponent, AuthGuardService],
   bootstrap: [AppComponent],
 
 })

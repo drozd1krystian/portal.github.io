@@ -11,8 +11,10 @@ import { map } from 'rxjs/operators';
 export class SekcjaNiesmieszneComponent implements OnInit {
 
   theEnd = false;
+
   memy = this.asf.getMemyZKategori('Nieśmieszne');
   constructor(private asf: FireStoreServicesService, public mem: MidColumnComponent) {
+
 
    }
   ngOnInit() {
