@@ -39,6 +39,8 @@ import { SekcjaNajlepszeComponent } from './components/sekcja-najlepsze/sekcja-n
 import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-najnowsze.component';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import {AuthGuardService} from './services/authorization/auth.guard.service';
+import { FireStoreServicesService } from './services/fire-store-services.service';
+import { Observable } from 'rxjs';
 
 
 

@@ -5,18 +5,18 @@
       <h1 class="h2">Profil</h1>
     </div>
     <!-- Show user data when logged in -->
-    <div class="row" *ngIf="this.authService.userData as user">
+    <div class="row" *ngIf = "userZbazy | async as userPojedynczy" >
       <div class="col-md-12">
         <div class="media">
           <img class="align-self-start mr-5 img-thumbnail rounded-circle"
-            src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}">
+            src="{{(userPojedynczy[0].photoURL) ? userPojedynczy[0].photoURL : '/assets/dummy-user.png'}}" alt="{{userPojedynczy[0].displayName}}">
           <div class="media-body">
-            <h1><strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+            <h1><strong>{{(userPojedynczy[0].displayName) ? userPojedynczy[0].displayName : 'User'}}</strong></h1>
 
-            <p>User ID: <strong>{{user.uid}}</strong></p>
-            <p>Email: <strong>{{user.email}}</strong></p>
-            <p *ngIf="!user.emailVerified">Email niezwerfikowany</p>
-            <button *ngIf="!user.emailVerified" type="button" mdbBtn color="info" class="dark blue lighten-1"
+            <p>User ID: <strong>{{userPojedynczy[0].uid}}</strong></p>
+            <p>Email: <strong>{{userPojedynczy[0].email}}</strong></p>
+            <p *ngIf="!userPojedynczy[0].emailVerified">Email niezwerfikowany</p>
+            <button *ngIf="!userPojedynczy[0].emailVerified" type="button" mdbBtn color="info" class="dark blue lighten-1"
             (click)="click()">
               Zweryfikuj e-mail
             </button>
