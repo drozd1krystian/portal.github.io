@@ -20,5 +20,9 @@ export class FireStoreServicesService {
       }));
     return memy;
   }
+  public trackByIdx(i){
+    return i;
+  }
 }
+
 
