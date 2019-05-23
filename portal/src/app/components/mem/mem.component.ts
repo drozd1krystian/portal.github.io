@@ -44,11 +44,11 @@ export class MemComponent implements OnInit {
     }
   public upVote() {
     this.upVoteButton = true;
-    this.downVoteButton = false;
+    this.downVoteButton = null;
     this.db.collection('memy').doc(this.memId).update({ocena: this.memOcena + 1});
   }
   public downVote() {
-    this.upVoteButton = false;
+    this.upVoteButton = null;
     this.downVoteButton = true;
     this.db.collection('memy').doc(this.memId).update({ocena: parseInt(this.memOcena) - 1});
   }
