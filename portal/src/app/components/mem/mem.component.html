@@ -13,7 +13,7 @@
   <button class = "waves light" mdbWavesEffec (click)="upVote()" [disabled]="upVoteButton" ><i class="fas fa-arrow-up" ></i> </button>
   <button class = "waves light" mdbWavesEffect (click)="downVote()" [disabled]="upVoteButton"><i class="fas fa-arrow-down"></i> </button>
   <button class = "waves light" mdbWavesEffect><i class="far fa-comment-dots"></i> </button>
-  <button class = "waves light facebook" mdbWavesEffect><i class="fab fa-facebook-f"></i> Facebook</button>
-  <button class = "waves light twitter" mdbWavesEffect><i class="fab fa-twitter"></i> Twitter</button>
+  <fb-like url={{memLink}} class ="facebook"></fb-like>
+  <tweet url="{{memLink}}" class ="twitter" text="Najlepszy mem!"></tweet>
 </div>
 <hr>
