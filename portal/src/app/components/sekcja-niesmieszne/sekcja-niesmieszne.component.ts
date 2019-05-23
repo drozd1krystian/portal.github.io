@@ -9,7 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class SekcjaNiesmieszneComponent implements OnInit {
 
   theEnd = false;
-  memy = this.db.collection('memy', ref => ref.orderBy('dataDodania').where('kategoria', '==', 'Polityka')).valueChanges();
+  memy = this.db.collection('memy', ref => ref.orderBy('dataDodania').where('kategoria', '==', 'Nieśmieszne')).valueChanges();
 
   constructor(private db: AngularFirestore, public mem: MidColumnComponent) {
 
