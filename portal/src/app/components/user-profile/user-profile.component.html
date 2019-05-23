@@ -23,15 +23,16 @@
             <button type="button" mdbBtn color="info" class="dark blue lighten-1"  (click)=displayNickNameChangeForm()>
               Zmień nick
             </button>
+
+            <button type="button" mdbBtn color="info" class="dark blue lighten-1" (click)="click()">
+              Zmień hasło
+            </button>
             <form *ngIf="displayNickNameChangeFormBoolean" #nicknameChanger="ngForm" (ngSubmit)="changeNickname(nicknameChanger)">
               <input ngModel minlength="6" type="text" class="form-control mb-4" placeholder="nick" id="nick" required
                 name="nick" #nick="ngModel">
               <button mdbBtn color="info"  class="dark blue lighten-1" type="submit"
                 [disabled]="!nicknameChanger.form.valid">Potwierdź zmianę nicku</button>
             </form>
-            <button type="button" mdbBtn color="info" class="dark blue lighten-1" (click)="click()">
-              Zmień hasło
-            </button>
           </div>
         </div>
       </div>

@@ -16,6 +16,10 @@ export class MemComponent implements OnInit {
   @Input() memId: string;
   @Input() autorAvatar: string;
 
+  @Input() awatarTworcy: string;
+  constructor() {
+
+
   upVoteButton: boolean;
   downVoteButton = null;
   constructor(private db: AngularFirestore) {
