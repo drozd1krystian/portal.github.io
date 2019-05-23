@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FireStoreServicesService {
-
+  id: string;
   constructor(private db: AngularFirestore) { }
 
   public getMemyZKategori(kategoria) {
@@ -19,10 +19,16 @@ export class FireStoreServicesService {
         });
       }));
     return memy;
+    }
+  public getDocId(link) {
+    const docId = this.db.collection('memy', ref => ref.where('link', '==', link).limit(1)).snapshotChanges()
+    .pipe(map(actions =>{
+      return actions.map(a => {
+        const id = a.payload.doc.id;
+        return id;
+      });
+    }));
+    return docId;
   }
-  public trackByIdx(i){
-    return i;
-  }
+
 }
-
-

@@ -17,7 +17,6 @@ export class MidColumnComponent implements OnInit {
 
   batch = 20;
   theEnd = false;
-
   offset = new BehaviorSubject(null);
   infinite: Observable<any[]>;
 
@@ -31,6 +30,9 @@ export class MidColumnComponent implements OnInit {
     );
 
     this.infinite = batchMap.pipe(map(v => Object.values(v)));
+    this.infinite.forEach(a => {
+      console.log(a);
+    });
   }
 
   getBatch(offset) {
@@ -49,7 +51,7 @@ export class MidColumnComponent implements OnInit {
           return arr.reduce((acc, cur) => {
             const id = cur.payload.doc.id;
             const data = cur.payload.doc.data();
-            return { ...acc, [id]: data };
+            return {...acc, [id]: data};
           }, {});
         })
       );
