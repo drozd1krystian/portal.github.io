@@ -17,7 +17,6 @@ export class MemComponent implements OnInit {
   @Input() autorAvatar: string;
 
   @Input() awatarTworcy: string;
-  constructor() {
 
 
   upVoteButton: boolean;
