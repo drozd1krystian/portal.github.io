@@ -1,5 +1,5 @@
 <div class ="opis-posta">
-  <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
+  <img src="{{autorAvatar ? autorAvatar : '/assets/dummy-user.png'}}" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
   <span> {{memTworca}}</span> <span class ="dot"> &#183; </span> <span>{{memKategoria}}</span>
   <br>
   <a href ="#"><span class = "tytul"><strong> {{memTytul}} </strong></span> </a>
@@ -8,11 +8,10 @@
 <div class ="post" [style.height.px]="[getSize(memLink)]">
   <img src = {{memLink}} alt ="">
 </div>
-
-<div class ="buttons" >
+<div class ="buttons">
   <p>{{memOcena}} punktów</p>
-  <button class = "waves light" mdbWavesEffect><i class="fas fa-arrow-up"></i> </button>
-  <button class = "waves light" mdbWavesEffect><i class="fas fa-arrow-down"></i> </button>
+  <button class = "waves light" mdbWavesEffec (click)="upVote()" [disabled]="upVoteButton" ><i class="fas fa-arrow-up" ></i> </button>
+  <button class = "waves light" mdbWavesEffect (click)="downVote()" [disabled]="upVoteButton"><i class="fas fa-arrow-down"></i> </button>
   <button class = "waves light" mdbWavesEffect><i class="far fa-comment-dots"></i> </button>
   <button class = "waves light facebook" mdbWavesEffect><i class="fab fa-facebook-f"></i> Facebook</button>
   <button class = "waves light twitter" mdbWavesEffect><i class="fab fa-twitter"></i> Twitter</button>

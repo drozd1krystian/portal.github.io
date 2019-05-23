@@ -1,6 +1,8 @@
+import { FireStoreServicesService } from './../../services/fire-store-services.service';
 import { MidColumnComponent } from './../mid-column/mid-column.component';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-polityka',
@@ -10,9 +12,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class PolitykaComponent implements OnInit {
 
   theEnd = false;
-  memy = this.db.collection('memy', ref => ref.orderBy('dataDodania').where('kategoria', '==', 'Polityka')).valueChanges();
+  memy = this.asf.getMemyZKategori('Polityka');
 
-  constructor(private db: AngularFirestore, public mem: MidColumnComponent) {
+  constructor(private asf: FireStoreServicesService, public mem: MidColumnComponent) {
 
    }
   ngOnInit() {
