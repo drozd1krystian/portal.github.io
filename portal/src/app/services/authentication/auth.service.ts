@@ -10,6 +10,10 @@ import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firest
 })
 export class AuthService {
   public userData: User = null;
+  public set userNick(nick: string) {
+    this.userData.displayName = nick;
+
+  }
 
 
   constructor(public angularFire: AngularFireAuth,
@@ -50,6 +54,11 @@ logged in and setting up null when logged out */
     return this.userData;
   }
 
+  public setUserNick(nick: string) {
+
+    this.userData.displayName = nick;
+
+  }
 
   signup(email: string, password: string) {
     this.angularFire.auth.createUserWithEmailAndPassword(email, password).then(user => {
@@ -78,7 +87,10 @@ logged in and setting up null when logged out */
   async authLogin(provider) {
     try {
       const result = await this.angularFire.auth.signInWithPopup(provider);
-      console.log('logged in with fb');
+      console.log('logged in with' + provider);
+      this.setUserData(this.userData);
+
+      this.router.navigate(['/']);
     } catch (error) {
       console.log(error);
     }
@@ -86,7 +98,7 @@ logged in and setting up null when logged out */
 
   async SendVerificationMail() {
     await this.angularFire.auth.currentUser.sendEmailVerification();
-    this.router.navigate(['verify-email-address']);
+    this.router.navigate(['verifyEmail']);
   }
 
   // Reset Forggot password
@@ -106,7 +118,7 @@ logged in and setting up null when logged out */
 
 
 
- // ustawia dane usera ktore zwroci nam system logowania, zapisuje je do zmiennej userData ale tez do bazy
+  // ustawia dane usera ktore zwroci nam system logowania, zapisuje je do zmiennej userData ale tez do bazy
   setUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const userData: User = {

@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: '', component: MemyComponent },
   { path: 'upload', component: UploaderComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignUpComponent },
+  { path: 'signup', component: SignUpComponent},
   { path: 'forgotPassword', component: ForgotPasswordComponent},
   { path: 'verifyEmail', component: VerifyEmailComponent},
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuardService]},
