@@ -1,6 +1,8 @@
+import { FireStoreServicesService } from './../../services/fire-store-services.service';
 import { MidColumnComponent } from './../mid-column/mid-column.component';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-sekcja-niesmieszne',
   templateUrl: './sekcja-niesmieszne.component.html',
@@ -9,9 +11,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class SekcjaNiesmieszneComponent implements OnInit {
 
   theEnd = false;
-  memy = this.db.collection('memy', ref => ref.orderBy('dataDodania').where('kategoria', '==', 'Nieśmieszne')).valueChanges();
 
-  constructor(private db: AngularFirestore, public mem: MidColumnComponent) {
+  memy = this.asf.getMemyZKategori('Nieśmieszne');
+  constructor(private asf: FireStoreServicesService, public mem: MidColumnComponent) {
+
 
    }
   ngOnInit() {

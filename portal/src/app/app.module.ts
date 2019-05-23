@@ -38,6 +38,7 @@ import { SekcjaHistoryjkiComponent } from './components/sekcja-historyjki/sekcja
 import { SekcjaNiesmieszneComponent } from './components/sekcja-niesmieszne/sekcja-niesmieszne.component';
 import { SekcjaNajlepszeComponent } from './components/sekcja-najlepsze/sekcja-najlepsze.component';
 import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-najnowsze.component';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import {AuthGuardService} from './services/authorization/auth.guard.service';
 
 
@@ -79,7 +80,8 @@ import {AuthGuardService} from './services/authorization/auth.guard.service';
     BrowserAnimationsModule,
     ScrollingModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    JwSocialButtonsModule
   ],
   providers: [AuthService, MidColumnComponent, AuthGuardService],
   bootstrap: [AppComponent],

@@ -74,7 +74,6 @@ export class FileUploadComponent {
         // tslint:disable-next-line: max-line-length
         this.db.collection('memy').add({
           link: this.downloadURL,
-          id: path,
           ocena: 1,
           tytul: this.tytul,
           kategoria: this.rodzaj,
