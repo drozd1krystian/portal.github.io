@@ -1,10 +1,9 @@
 import { FireStoreServicesService } from './../../services/fire-store-services.service';
-import { Observable, BehaviorSubject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import {map, tap, scan, mergeMap, throttleTime} from 'rxjs/operators';
-import * as _ from 'lodash';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-mid-column',
@@ -15,12 +14,12 @@ export class MidColumnComponent implements OnInit {
   @ViewChild(CdkVirtualScrollViewport)
   viewport: CdkVirtualScrollViewport;
 
-  batch = 20;
+  batch = 10;
   theEnd = false;
   offset = new BehaviorSubject(null);
   infinite: Observable<any[]>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, public asf: FireStoreServicesService) {
     const batchMap = this.offset.pipe(
       throttleTime(500),
       mergeMap(n => this.getBatch(n)),
@@ -30,9 +29,6 @@ export class MidColumnComponent implements OnInit {
     );
 
     this.infinite = batchMap.pipe(map(v => Object.values(v)));
-    this.infinite.forEach(a => {
-      console.log(a);
-    });
   }
 
   getBatch(offset) {
@@ -40,6 +36,7 @@ export class MidColumnComponent implements OnInit {
     return this.db
       .collection('memy', ref =>
         ref
+          .where('ocena', '<', 100).orderBy('ocena')
           .orderBy('dataDodania')
           .startAfter(offset)
           .limit(this.batch)

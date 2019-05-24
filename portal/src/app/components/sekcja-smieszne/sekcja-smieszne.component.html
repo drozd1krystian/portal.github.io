@@ -1,10 +1,12 @@
 <app-left-column></app-left-column>
 <div class ="mid-column">
-    <ng-container *ngIf = "memy | async as memy">
-        <div *ngFor="let m of memy" class ="post-container" [style.height.px]="[mem.getSize(m.link)+ 150]">
-          <app-mem [memTworca] = "m.tworca" [memKategoria] = "m.kategoria" [memLink] = "m.link"
-                   [memTytul] = "m.tytul" [memOcena]= "m.ocena" [memId]="m.id" [autorAvatar]= "m.awatarTworcy">
-          </app-mem>
-        </div>
-    </ng-container>
-</div>
+  <ng-container *ngIf = "infinite | async as memy" >
+    <cdk-virtual-scroll-viewport itemSize="100" (scrolledIndexChange)="nextBatch($event, (memy[memy.length - 1].dataDodania))">
+         <div *cdkVirtualFor="let m of memy; let i = index; trackBy: trackByIdx" class ="post-container"  [style.height.px]="[mem.getSize(m.link)+ 150]">
+           <app-mem [memTworca] = "m.tworca" [memKategoria] = "m.kategoria" [memLink] = "m.link"
+                     [memTytul] = "m.tytul" [memOcena]= "m.ocena" [autorAvatar]= "m.awatarTworcy">
+            </app-mem>
+          </div>
+    </cdk-virtual-scroll-viewport>
+  </ng-container>
+  </div>
