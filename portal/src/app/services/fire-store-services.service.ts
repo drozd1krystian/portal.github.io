@@ -1,12 +1,22 @@
+import { MidColumnComponent } from './../components/mid-column/mid-column.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import {map, tap, scan, mergeMap, throttleTime} from 'rxjs/operators';
+import * as _ from 'lodash';
+import { Observable, BehaviorSubject } from 'rxjs';
+import {ViewChild } from '@angular/core';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FireStoreServicesService {
-  id: string;
+
+  batch = 20;
+  theEnd = false;
+  offset = new BehaviorSubject(null);
+  infinite: Observable<any[]>;
+
   constructor(private db: AngularFirestore) { }
 
   public getMemyZKategori(kategoria) {
@@ -20,6 +30,7 @@ export class FireStoreServicesService {
       }));
     return memy;
     }
+
   public getDocId(link) {
     const docId = this.db.collection('memy', ref => ref.where('link', '==', link).limit(1)).snapshotChanges()
     .pipe(map(actions =>{
@@ -29,6 +40,55 @@ export class FireStoreServicesService {
       });
     }));
     return docId;
+  }
+
+  // MEMY Z KATEGORII //
+  getBatchKategoria(offset, kat) {
+    console.log(offset);
+    return this.db
+      .collection('memy', ref =>
+        ref
+          .where('kategoria', '==', kat)
+          .orderBy('dataDodania', 'desc')
+          .startAfter(offset)
+          .limit(this.batch)
+      )
+      .snapshotChanges()
+      .pipe(
+        tap(arr => (arr.length ? null : (this.theEnd = true))),
+        map(arr => {
+          return arr.reduce((acc, cur) => {
+            const id = cur.payload.doc.id;
+            const data = cur.payload.doc.data();
+            return {...acc, [id]: data};
+          }, {});
+        })
+      );
+  }
+  getBatchNajlepsze(offset, znak, ocena) {
+    console.log(offset);
+    return this.db
+      .collection('memy', ref =>
+        ref
+          .where('ocena', znak , ocena)
+          .orderBy('ocena')
+          .startAfter(offset)
+          .limit(this.batch)
+      )
+      .snapshotChanges()
+      .pipe(
+        tap(arr => (arr.length ? null : (this.theEnd = true))),
+        map(arr => {
+          return arr.reduce((acc, cur) => {
+            const id = cur.payload.doc.id;
+            const data = cur.payload.doc.data();
+            return {...acc, [id]: data};
+          }, {});
+        })
+      );
+  }
+  returnTheEnd(){
+    return this.theEnd;
   }
 
 }
