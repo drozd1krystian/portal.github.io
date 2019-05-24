@@ -29,7 +29,7 @@ export class SekcjaHistoryjkiComponent implements OnInit {
     this.infinite = batchMap.pipe(map(v => Object.values(v)));
    }
    nextBatch(e, offset) {
-    if (this.asf.returnTheEnd) {
+    if (this.asf.returnTheEnd()) {
       return;
     }
     const end = this.viewport.getRenderedRange().end;

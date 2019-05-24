@@ -65,12 +65,12 @@ export class FireStoreServicesService {
         })
       );
   }
-  getBatchNajlepsze(offset, znak, ocena) {
+  getBatchNajlepsze(offset, ocena) {
     console.log(offset);
     return this.db
       .collection('memy', ref =>
         ref
-          .where('ocena', znak , ocena)
+          .where('ocena', '>=' , 100)
           .orderBy('ocena')
           .startAfter(offset)
           .limit(this.batch)

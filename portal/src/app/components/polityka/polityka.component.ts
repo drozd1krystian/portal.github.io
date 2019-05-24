@@ -31,7 +31,7 @@ export class PolitykaComponent implements OnInit {
     })
    }
    nextBatch(e, offset) {
-    if (this.asf.returnTheEnd) {
+    if (this.asf.returnTheEnd()) {
       return;
     }
     const end = this.viewport.getRenderedRange().end;

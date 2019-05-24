@@ -13,10 +13,11 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class MidColumnComponent implements OnInit {
   @ViewChild(CdkVirtualScrollViewport)
   viewport: CdkVirtualScrollViewport;
-  infinite: Observable<any[]>;
-  offset = new BehaviorSubject(null);
+
   batch = 20;
   theEnd = false;
+  offset = new BehaviorSubject(null);
+  infinite: Observable<any[]>;
 
   constructor(private db: AngularFirestore, public asf: FireStoreServicesService) {
     const batchMap = this.offset.pipe(
@@ -26,11 +27,8 @@ export class MidColumnComponent implements OnInit {
         return { ...acc, ...batch };
       }, {})
     );
+
     this.infinite = batchMap.pipe(map(v => Object.values(v)));
-  }
-
-  ngOnInit() {
-
   }
 
   getBatch(offset) {
@@ -38,9 +36,9 @@ export class MidColumnComponent implements OnInit {
     return this.db
       .collection('memy', ref =>
         ref
-          .where('ocena', '<=', 99)
+          .where('ocena', '<', '100')
           .orderBy('ocena')
-          .orderBy('dataDodania', 'desc')
+          .orderBy('dataDodania')
           .startAfter(offset)
           .limit(this.batch)
       )
@@ -56,10 +54,12 @@ export class MidColumnComponent implements OnInit {
         })
       );
   }
+
   nextBatch(e, offset) {
     if (this.theEnd) {
       return;
     }
+
     const end = this.viewport.getRenderedRange().end;
     const total = this.viewport.getDataLength();
     console.log(`${end}, '>=', ${total}`);
@@ -70,6 +70,9 @@ export class MidColumnComponent implements OnInit {
 
   trackByIdx(i) {
     return i;
+  }
+  ngOnInit(){
+
   }
   public getSize(url) {
     const img = new Image();
