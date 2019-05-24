@@ -27,9 +27,6 @@ export class SekcjaNajlepszeComponent implements OnInit {
       }, {})
     );
     this.infinite = batchMap.pipe(map(v => Object.values(v)));
-    this.infinite.forEach(a =>{
-      console.log(a);
-    })
    }
    nextBatch(e, offset) {
     if (this.asf.returnTheEnd) {

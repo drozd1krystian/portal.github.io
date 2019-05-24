@@ -14,7 +14,7 @@ export class MidColumnComponent implements OnInit {
   @ViewChild(CdkVirtualScrollViewport)
   viewport: CdkVirtualScrollViewport;
 
-  batch = 20;
+  batch = 10;
   theEnd = false;
   offset = new BehaviorSubject(null);
   infinite: Observable<any[]>;
@@ -36,8 +36,7 @@ export class MidColumnComponent implements OnInit {
     return this.db
       .collection('memy', ref =>
         ref
-          .where('ocena', '<', '100')
-          .orderBy('ocena')
+          .where('ocena', '<', 100).orderBy('ocena')
           .orderBy('dataDodania')
           .startAfter(offset)
           .limit(this.batch)

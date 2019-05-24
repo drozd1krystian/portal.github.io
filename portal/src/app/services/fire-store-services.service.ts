@@ -43,13 +43,13 @@ export class FireStoreServicesService {
   }
 
   // MEMY Z KATEGORII //
-  getBatchKategoria(offset, kat) {
+  getBatchKategoria(offset, kat: string) {
     console.log(offset);
     return this.db
       .collection('memy', ref =>
         ref
           .where('kategoria', '==', kat)
-          .orderBy('dataDodania', 'desc')
+          .orderBy('dataDodania')
           .startAfter(offset)
           .limit(this.batch)
       )
