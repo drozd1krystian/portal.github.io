@@ -1,6 +1,6 @@
 <app-left-column></app-left-column>
 <div class ="mid-column">
-  <ng-container *ngIf = "infinite | async as memy" >
+  <ng-container *ngIf = "best | async as memy" >
     <cdk-virtual-scroll-viewport itemSize="100" (scrolledIndexChange)="nextBatch($event, (memy[memy.length - 1].link))">
          <div *cdkVirtualFor="let m of memy; let i = index; trackBy: trackByIdx" class ="post-container"  [style.height.px]="[mem.getSize(m.link)+ 150]">
            <app-mem [memTworca] = "m.tworca" [memKategoria] = "m.kategoria" [memLink] = "m.link"
