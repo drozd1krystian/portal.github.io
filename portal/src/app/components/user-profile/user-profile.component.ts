@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FireStoreServicesService } from 'src/app/services/fire-store-services.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,13 +17,14 @@ export class UserProfileComponent implements OnInit {
   displayNickNameChangeFormBoolean = false;
   checkIfChangeEmail = false;
   userZbazy;
+  zmienAwatar: boolean = false;
   constructor(
-
+    public router: Router,
     public authService: AuthService,
     public afs: AngularFirestore,
     public ffs: FireStoreServicesService) {
     this.userZbazy = ffs.getUser(this.authService.userData.uid);
-    this.userZbazy.forEach( arr =>{
+    this.userZbazy.forEach(arr => {
 
       console.log(arr[0].displayName);
     });
@@ -37,8 +40,7 @@ export class UserProfileComponent implements OnInit {
       .collection('users')
       .doc(this.authService.userData.uid)
       .update({ displayName: formData.value.nick }).then(value => {
-
-        this.authService.getUserData().displayName = "wojtusiu";
+        this.router.navigate(['/user-profile']);
         console.log(this.authService.userData.displayName);
         console.log('updatnieto nickora');
       }).catch(value => {
@@ -51,6 +53,9 @@ export class UserProfileComponent implements OnInit {
   displayNickNameChangeForm() {
     console.log('clicked');
     this.displayNickNameChangeFormBoolean = !this.displayNickNameChangeFormBoolean;
+  }
+  zmienAwatara() {
+    this.zmienAwatar = !this.zmienAwatar;
   }
   click() {
     console.log('clicked');
