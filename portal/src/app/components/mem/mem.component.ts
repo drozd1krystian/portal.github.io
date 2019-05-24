@@ -1,15 +1,13 @@
-import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FireStoreServicesService } from './../../services/fire-store-services.service';
-import { MidColumnComponent } from './../mid-column/mid-column.component';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-mem',
   templateUrl: './mem.component.html',
   styleUrls: ['./mem.component.scss']
 })
-export class MemComponent implements OnInit {
+export class MemComponent implements OnInit{
   @Input() memTworca: string;
   @Input() memKategoria: string;
   @Input() memLink: string;
@@ -18,14 +16,15 @@ export class MemComponent implements OnInit {
   @Input() memId: string;
   @Input() autorAvatar: string;
   @Input() awatarTworcy: string;
-
   docId: any;
+
   upVoteButton: boolean;
   downVoteButton = null;
   constructor(private asf: FireStoreServicesService, private db: AngularFirestore) {
    }
 
   ngOnInit() {
+    this.docId = this.asf.getDocId(this.memLink);
   }
 
   getSize(url){
@@ -42,18 +41,14 @@ export class MemComponent implements OnInit {
     img.src = url;
     return img.width;
     }
-  public upVote() {
+  public upVote(id) {
     this.upVoteButton = true;
     this.downVoteButton = null;
-    const docId = this.asf.getDocId(this.memLink);
-    docId.subscribe(a => {
-        this.db.collection('memy').doc(a[0]).update({ocena: this.memOcena + 1});
-        return;
-    });
+    this.db.collection('memy').doc(id).update({ocena: this.memOcena + 1});
   }
-  public downVote() {
+  public downVote(id) {
     this.upVoteButton = null;
     this.downVoteButton = true;
-    //this.asf.getDocId(this.memLink, this.memOcena, 'down');
+    this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) -1});
   }
 }

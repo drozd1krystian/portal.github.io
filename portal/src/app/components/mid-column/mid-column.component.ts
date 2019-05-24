@@ -20,7 +20,7 @@ export class MidColumnComponent implements OnInit {
   offset = new BehaviorSubject(null);
   infinite: Observable<any[]>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, public asf: FireStoreServicesService) {
     const batchMap = this.offset.pipe(
       throttleTime(500),
       mergeMap(n => this.getBatch(n)),
@@ -30,9 +30,6 @@ export class MidColumnComponent implements OnInit {
     );
 
     this.infinite = batchMap.pipe(map(v => Object.values(v)));
-    this.infinite.forEach(a => {
-      console.log(a);
-    });
   }
 
   getBatch(offset) {
