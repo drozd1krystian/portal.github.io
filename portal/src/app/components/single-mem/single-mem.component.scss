@@ -1,8 +1,10 @@
-.post-container{
+.post-container-single{
   margin-left:40px;
-  margin-top:50px;
+  margin-top:30px;
+  width:550px !important;
 }
 .opis-posta{
+  margin-left:20px;
   height:70px;
   & img{
     width:20px;
@@ -44,4 +46,16 @@
   border:1px solid grey;
   border-radius: 5px;
   }
+  .facebook{
+    margin-right:20px;
+    margin-left:100px;
+  }
+}
+
+.clicked{
+   color:blue;
+}
+cdk-virtual-scroll-viewport{
+  margin-top:50px;
+  width:100%;
 }

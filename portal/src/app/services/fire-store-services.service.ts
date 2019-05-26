@@ -41,6 +41,17 @@ export class FireStoreServicesService {
     return docId;
   }
 
+  public getDoc() {
+    const docId = this.db.collection('memy').snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    }));
+    return docId;
+  }
+
   // MEMY Z KATEGORII //
   getBatchKategoria(offset, kat: string) {
     console.log(offset);

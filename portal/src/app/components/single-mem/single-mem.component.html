@@ -1,25 +1,28 @@
-<div class ="post-container" *ngIf="singleMem" [style.height.px]="[m.getSize(singleMem.link)+250]">
-  <div class ="opis-posta">
-    <img src="{{singleMem.awatarTworcy ? singleMem.awatarTworcy : '/assets/dummy-user.png'}}" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
-    <span> {{singleMem.tworca}}</span> <span class ="dot"> &#183; </span> <span>{{singleMem.kategoria}}</span>
+<div class ="post-container-single" *ngIf="memObserv | async as singleMem " [style.height.px]="[m.getSize(singleMem[0].link)+250]">
+  <div class ="opis-posta" >
+    <img src="{{singleMem[0].awatarTworcy ? singleMem[0].awatarTworcy : '/assets/dummy-user.png'}}" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
+    <span> {{singleMem[0].tworca}}</span> <span class ="dot"> &#183; </span> <span>{{singleMem[0].kategoria}}</span>
     <br>
-    <span class = "tytul"><strong> {{singleMem.tytul}} </strong></span>
+    <span class = "tytul"><strong> {{singleMem[0].tytul}} </strong></span>
     <div class ="buttons">
-      <button class ="waves light" mdbWavesEffec (click)="upVote(docId)"
+      <button class ="waves light" mdbWavesEffec (click)="upVote(docId,singleMem[0].ocena)"
           [ngClass]="{clicked: upVoteButton }">
           <i class="fas fa-arrow-up" ></i>
       </button>
-      <button class = "waves light" mdbWavesEffect (click)="downVote(docId)"
+      <button class = "waves light" mdbWavesEffect (click)="downVote(docId, singleMem[0].ocena)"
         [ngClass]="{clicked: downVoteButton }">
         <i class="fas fa-arrow-down"></i>
       </button>
-      <span>{{singleMem.ocena}} punktów</span>
+      <span >{{singleMem[0].ocena}} punktów</span>
+      <fb-like url={{singleMem[0].link}} class ="facebook"></fb-like>
+      <tweet url="{{singleMem[0].link}}" class ="twitter" text="Najlepszy mem!"></tweet>
     </div>
   </div>
-  <div class ="post" [style.height.px]="[m.getSize(singleMem.link)]">
-    <img src = {{singleMem.link}} alt ="">
-
-  </div>
+  <cdk-virtual-scroll-viewport [style.height.px]="650" itemSize="100">
+    <div class ="post" [style.height.px]="[m.getSize(singleMem[0].link)]">
+      <img src = {{singleMem[0].link}} alt ="">
+    </div>
+  </cdk-virtual-scroll-viewport>
 </div>
 
 <div class = "komentarze">

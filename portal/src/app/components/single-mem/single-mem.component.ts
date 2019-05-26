@@ -4,6 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-single-mem',
@@ -11,42 +12,43 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./single-mem.component.scss']
 })
 export class SingleMemComponent implements OnInit {
-  singleMem;
+  //singleMem;
   memObserv: Observable<any[]>;
   docId;
   upVoteButton = this.m.upVoteButton;
   downVoteButton = this.m.downVoteButton;
+
+
   constructor(public asf: FireStoreServicesService, public m: MemComponent, private route: ActivatedRoute, private db: AngularFirestore) {
     this.docId = this.route.snapshot.paramMap.get('id');
-    this.db.collection('memy').doc(this.docId).ref.get().then((doc) => {
-     this.singleMem = doc.data();
-    });
+    this.memObserv = asf.getDoc().pipe(map(me => {
+      const l = me.filter(mem => mem.id === this.docId);
+      return l;
+    }));
   }
 
   ngOnInit() {
 
   }
-  public set(){
-    this.memObserv = this.asf.getDocId(this.singleMem.link);
-  }
-  public upVote(id) {
+  public upVote(id, ocena) {
+
     if (this.upVoteButton) {
-      this.db.collection('memy').doc(id).update({ocena: parseInt(this.singleMem.ocena) -1});
+      this.db.collection('memy').doc(id).update({ocena: ocena -1});
       this.upVoteButton = null;
     } else {
       this.upVoteButton = true;
       this.downVoteButton = null;
-      this.db.collection('memy').doc(id).update({ocena: this.singleMem.ocena + 1});
+      this.db.collection('memy').doc(id).update({ocena: ocena + 1});
     }
   }
-  public downVote(id) {
+  public downVote(id, ocena) {
     if (this.downVoteButton) {
-      this.db.collection('memy').doc(id).update({ocena: this.singleMem.ocena +1});
+      this.db.collection('memy').doc(id).update({ocena: ocena + 1});
       this.downVoteButton = null;
     } else {
       this.downVoteButton = true;
       this.upVoteButton = null;
-      this.db.collection('memy').doc(id).update({ocena: parseInt(this.singleMem.ocena) - 1});
+      this.db.collection('memy').doc(id).update({ocena: ocena - 1});
     }
   }
 
