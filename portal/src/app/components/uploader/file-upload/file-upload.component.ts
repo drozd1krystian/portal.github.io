@@ -5,8 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { finalize, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/authentication/auth.service';
 import { Router } from '@angular/router';
-import { UploaderComponent } from '../uploader/uploader.component';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+
 
 
 
@@ -40,21 +39,9 @@ export class FileUploadComponent {
   }
 
 
-
-
-  onResolve(foundURL) {
-    //stuff
-  }
-
-  onReject(error) {
-    console.log(error.code);
-  }
-
   toggleHover(event: boolean) {
     this.isHovering = event;
   }
-
-
 
 
 
@@ -77,33 +64,62 @@ export class FileUploadComponent {
     const customMetadata = { app: 'My AngularFire-powered PWA!' };
 
     // czy wstawiamy awatar?
-
+console.log("status czyAwatar = "+this.czyAwatar);
     if (this.czyAwatar) {
-      //const storageRef = this.storage.storage.refFromURL(this.authService.userData.photoURL).getDownloadURL().then(this.onResolve, this.onReject);
+      console.log(' w srodku czyAwatar, photoURL:'+this.authService.userData.photoURL);
+      if ( this.authService.userData.photoURL === null) {
+
+        console.log('nie ma zdjecia');
+        // The main task
+        this.task = this.storage.upload(path, file, { customMetadata });
+
+        // Progress monitoring
+        this.percentage = this.task.percentageChanges();
+        this.snapshot = this.task.snapshotChanges();
+
+        this.snapshot = this.task.snapshotChanges().pipe(
+          tap(console.log),
+          // The file's download URL
+          finalize(async () => {
+
+            // link do nowego awatara:
+            this.downloadURL = await ref.getDownloadURL().toPromise();
+            console.log('aktualizuje download URL dla nowo dodanego awatara');
+            return this.db
+              .collection('users')
+              .doc(this.authService.userData.uid)
+              .update({ photoURL: this.downloadURL }).then(value => {
+                this.router.navigate(['/user-profile']);
+                console.log(this.authService.userData.displayName);
+                console.log('updatnieto awatarcio');
+              }).catch(value => {
+                console.log('bugi:');
+                console.log(value);
+              });
+
+          }),
+        );
 
 
-      const urlAwataraDoZmiany = this.storage.storage.refFromURL(this.authService.userData.photoURL);
 
-    //  console.log(storageRef);
+      }
+      // uzytkownik ma juz awatar, teraz go aktualizuje
+      else {
 
-
-      // urlAwataraDoZmiany.put(file).then(value => {
-      //   // jesli ma awatar w storagu:
-      //   window.alert('Zmieniono awatar!');
-
-      //   this.router.navigate(['/user-profile']);
-      // }).catch(error => {
+        this.task = this.storage.upload(path, file, { customMetadata });
+        this.storage.storage.refFromURL(this.authService.userData.photoURL);
 
 
-      //   // nie ma awatara w storageu. Jest zalogowany z google +/fb lub nie ma jeszcze awatara (dummy)
-      //   this.czyAwatar = false;
-      // });
+
+      }
+
+
 
 
 
     }
-
-    if (!this.czyAwatar) {
+    // uploadujemy mema
+    else {
       // The main task
       this.task = this.storage.upload(path, file, { customMetadata });
 
@@ -119,40 +135,25 @@ export class FileUploadComponent {
 
           this.downloadURL = await ref.getDownloadURL().toPromise();
           // zapis do kolekcji "memy" dokumentu z polami link, id, ocena, tworca
-          if (!this.czyAwatar) {
-            // tslint:disable-next-line: max-line-length
-            this.db.collection('memy').add({
-              link: this.downloadURL,
-              ocena: 1,
-              tytul: this.tytul,
-              kategoria: this.rodzaj,
-              tworca: this.authService.userData.displayName,
-              dataDodania: new Date(),
-              awatarTworcy: this.authService.userData.photoURL
 
-            }).then(value => {
-              window.alert('Upload zakończony sukcesem!');
-              this.router.navigate(['/']);
-            }).catch(value => {
-              window.alert('Upload zakończony niepowodzeniem!');
-              this.router.navigate(['/']);
-            });
-          } else {
+          // tslint:disable-next-line: max-line-length
+          this.db.collection('memy').add({
+            link: this.downloadURL,
+            ocena: 1,
+            tytul: this.tytul,
+            kategoria: this.rodzaj,
+            tworca: this.authService.userData.displayName,
+            dataDodania: new Date(),
+            awatarTworcy: this.authService.userData.photoURL
 
-            console.log('no witam');
-            return this.db
-              .collection('users')
-              .doc(this.authService.userData.uid)
-              .update({ photoURL: this.downloadURL }).then(value => {
-                this.router.navigate(['/user-profile']);
-                console.log(this.authService.userData.displayName);
-                console.log('updatnieto awatarcio');
-              }).catch(value => {
-                console.log('bugi:');
-                console.log(value);
-              });
+          }).then(value => {
+            window.alert('Upload zakończony sukcesem!');
+            this.router.navigate(['/']);
+          }).catch(value => {
+            window.alert('Upload zakończony niepowodzeniem!');
+            this.router.navigate(['/']);
+          });
 
-          }
 
         }),
       );

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/authentication/auth.service';
 import { Router } from '@angular/router';
+import { FireStoreServicesService } from 'src/app/services/fire-store-services.service';
+import { unescapeIdentifier } from '@angular/compiler';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,11 +10,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
+  userZbazy;
+  urlAwatara;
+  constructor(public authService: AuthService, private router: Router, public ffs: FireStoreServicesService) {
 
-  constructor(public authService: AuthService, private router: Router) { }
+
+
+
+  }
 
   ngOnInit() {
+
   }
+
 
   logout() {
     this.authService.logout();

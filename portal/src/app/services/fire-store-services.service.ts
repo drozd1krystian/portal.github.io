@@ -102,4 +102,17 @@ export class FireStoreServicesService {
     return this.theEnd;
   }
 
+  // wszyscy uzytkownicy -adminmode
+  public getUsers() {
+    const userzy = this.db.collection('users')
+      .snapshotChanges().pipe(map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      }));
+    return userzy;
+  }
 }
+

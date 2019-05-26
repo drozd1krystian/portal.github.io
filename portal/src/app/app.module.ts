@@ -41,6 +41,8 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import {AuthGuardService} from './services/authorization/auth.guard.service';
 import { FireStoreServicesService } from './services/fire-store-services.service';
 import { Observable } from 'rxjs';
+import { SekcjaAdminComponent } from './components/administrator/sekcja-admin/sekcja-admin.component';
+import { PrzegladMemowComponent } from './components/administrator/przeglad-memow/przeglad-memow.component';
 
 
 
@@ -68,6 +70,8 @@ import { Observable } from 'rxjs';
     SekcjaNiesmieszneComponent,
     SekcjaNajlepszeComponent,
     SekcjaNajnowszeComponent,
+    SekcjaAdminComponent,
+    PrzegladMemowComponent,
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],

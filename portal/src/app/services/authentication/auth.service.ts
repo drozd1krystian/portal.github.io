@@ -5,15 +5,14 @@ import { auth } from 'firebase';
 import { User } from './user'; // import naszego interfejsu uzytkownika
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   public userData: User = null;
-  public set userNick(nick: string) {
-    this.userData.displayName = nick;
+  public zalogowanyPrzez = 'login/haslo';
 
-  }
 
 
   constructor(public angularFire: AngularFireAuth,
@@ -27,14 +26,21 @@ logged in and setting up null when logged out */
     angularFire.authState.subscribe(user => {
       if (user) {
         this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
-      } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
+
+        this.zalogowanyPrzez = user.providerData.shift().providerId;
+
+
+
+
+
+
+
+
       }
     });
   }
+
+
 
   login(email: string, password: string) {
     this.angularFire.auth.signInWithEmailAndPassword(email, password).then(user => {
@@ -76,17 +82,20 @@ logged in and setting up null when logged out */
 
   // Sign in with Facebook
   facebookAuth() {
+    this.zalogowanyPrzez = 'facebook';
     return this.authLogin(new auth.FacebookAuthProvider());
   }
 
   // Sign in with Google
   googleAuth() {
+    this.zalogowanyPrzez = 'google+';
     return this.authLogin(new auth.GoogleAuthProvider());
+
   }
 
   async authLogin(provider) {
     try {
-      const result = await this.angularFire.auth.signInWithPopup(provider);
+      let result = await this.angularFire.auth.signInWithPopup(provider);
       console.log('logged in with' + provider);
       this.setUserData(this.userData);
 
@@ -112,20 +121,29 @@ logged in and setting up null when logged out */
   }
 
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
+    let user = JSON.parse(localStorage.getItem('user'));
     return (user !== null && user.emailVerified !== false) ? true : false;
   }
 
+  czyMaZdjecie(link) {
+    if (link) {
+      return link;
+    }
+    else {
+      return 'brak';
+    }
 
+  }
 
   // ustawia dane usera ktore zwroci nam system logowania, zapisuje je do zmiennej userData ale tez do bazy
   setUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const userData: User = {
+    console.log("ZALOGOWALEM DUPSKO")
+    let userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    let userData: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoURL: user.photoURL,
+      photoURL: this.czyMaZdjecie(user.photoURL),
       emailVerified: user.emailVerified
     };
     return userRef.set(userData, {
@@ -136,6 +154,7 @@ logged in and setting up null when logged out */
 
 
   async logout() {
+    this.zalogowanyPrzez = 'login/haslo';
     // usuwanie tokena firestore, czyszczenie danych z lokalnej pamieci + usuwanie danych ze zmiennej userData
     await this.angularFire.auth.signOut();
     this.userData = null;

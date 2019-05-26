@@ -36,6 +36,7 @@ export class UserProfileComponent implements OnInit {
 
   changeNickname(formData: NgForm) {
     console.log('no witam');
+    console.log(this.authService.zalogowanyPrzez);
     return this.afs
       .collection('users')
       .doc(this.authService.userData.uid)
@@ -59,5 +60,6 @@ export class UserProfileComponent implements OnInit {
   }
   click() {
     console.log('clicked');
+    console.log(this.authService.zalogowanyPrzez);
   }
 }
