@@ -1,11 +1,9 @@
 import { MidColumnComponent } from './../components/mid-column/mid-column.component';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore} from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import {map, tap, scan, mergeMap, throttleTime} from 'rxjs/operators';
+import {map, tap, } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { Observable, BehaviorSubject } from 'rxjs';
-import {ViewChild } from '@angular/core';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +34,8 @@ export class FireStoreServicesService {
     .pipe(map(actions =>{
       return actions.map(a => {
         const id = a.payload.doc.id;
-        return id;
+        const data = a.payload.doc.data();
+        return {id, ...data};
       });
     }));
     return docId;

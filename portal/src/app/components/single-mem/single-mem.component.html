@@ -1,0 +1,27 @@
+<div class ="post-container" *ngIf="singleMem" [style.height.px]="[m.getSize(singleMem.link)+250]">
+  <div class ="opis-posta">
+    <img src="{{singleMem.awatarTworcy ? singleMem.awatarTworcy : '/assets/dummy-user.png'}}" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
+    <span> {{singleMem.tworca}}</span> <span class ="dot"> &#183; </span> <span>{{singleMem.kategoria}}</span>
+    <br>
+    <span class = "tytul"><strong> {{singleMem.tytul}} </strong></span>
+    <div class ="buttons">
+      <button class ="waves light" mdbWavesEffec (click)="upVote(docId)"
+          [ngClass]="{clicked: upVoteButton }">
+          <i class="fas fa-arrow-up" ></i>
+      </button>
+      <button class = "waves light" mdbWavesEffect (click)="downVote(docId)"
+        [ngClass]="{clicked: downVoteButton }">
+        <i class="fas fa-arrow-down"></i>
+      </button>
+      <span>{{singleMem.ocena}} punktów</span>
+    </div>
+  </div>
+  <div class ="post" [style.height.px]="[m.getSize(singleMem.link)]">
+    <img src = {{singleMem.link}} alt ="">
+
+  </div>
+</div>
+
+<div class = "komentarze">
+
+</div>

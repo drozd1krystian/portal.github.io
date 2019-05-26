@@ -40,6 +40,7 @@ import { SekcjaNajlepszeComponent } from './components/sekcja-najlepsze/sekcja-n
 import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-najnowsze.component';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import {AuthGuardService} from './services/authorization/auth.guard.service';
+import { SingleMemComponent } from './components/single-mem/single-mem.component';
 
 
 
@@ -67,6 +68,7 @@ import {AuthGuardService} from './services/authorization/auth.guard.service';
     SekcjaNiesmieszneComponent,
     SekcjaNajlepszeComponent,
     SekcjaNajnowszeComponent,
+    SingleMemComponent,
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
@@ -83,7 +85,7 @@ import {AuthGuardService} from './services/authorization/auth.guard.service';
     FormsModule,
     JwSocialButtonsModule
   ],
-  providers: [AuthService, MidColumnComponent, AuthGuardService],
+  providers: [AuthService, MidColumnComponent, AuthGuardService, SingleMemComponent, MemComponent],
   bootstrap: [AppComponent],
 
 })

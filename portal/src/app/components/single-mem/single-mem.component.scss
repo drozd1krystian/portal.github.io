@@ -1,3 +1,7 @@
+.post-container{
+  margin-left:40px;
+  margin-top:50px;
+}
 .opis-posta{
   height:70px;
   & img{
@@ -20,7 +24,7 @@
   }
 }
 .post{
-  margin-top:20px;
+  margin-top:50px;
 }
 .post img{
   max-width: 100%;
@@ -39,19 +43,5 @@
   outline:none;
   border:1px solid grey;
   border-radius: 5px;
-
-}
-  .facebook, .twitter{
-    float:right;
-    margin-right:0px;
-    width:110px;
-    color:white;
-  }
-  p{
-    margin-top:20px;
-    margin-bottom:2px;
-  }
-.clicked{
-  color:blue;
   }
 }

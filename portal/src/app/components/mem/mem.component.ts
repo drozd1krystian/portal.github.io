@@ -20,7 +20,7 @@ export class MemComponent implements OnInit{
 
   upVoteButton: boolean;
   downVoteButton = null;
-  constructor(private asf: FireStoreServicesService, private db: AngularFirestore) {
+  constructor(public asf: FireStoreServicesService, private db: AngularFirestore) {
    }
 
   ngOnInit() {
@@ -41,24 +41,25 @@ export class MemComponent implements OnInit{
     img.src = url;
     return img.width;
     }
-  public upVote(id) {
-    if (this.upVoteButton) {
-      this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) -1});
-      this.upVoteButton = null;
-    } else {
-      this.upVoteButton = true;
-      this.downVoteButton = null;
-      this.db.collection('memy').doc(id).update({ocena: this.memOcena + 1});
+    public upVote(id) {
+      if (this.upVoteButton) {
+        this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) -1});
+        this.upVoteButton = null;
+      } else {
+        this.upVoteButton = true;
+        this.downVoteButton = null;
+        this.db.collection('memy').doc(id).update({ocena: this.memOcena + 1});
+      }
     }
-  }
-  public downVote(id) {
-    if (this.downVoteButton) {
-      this.db.collection('memy').doc(id).update({ocena: this.memOcena +1});
-      this.downVoteButton = null;
-    } else {
-      this.downVoteButton = true;
-      this.upVoteButton = null;
-      this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) - 1});
+    public downVote(id) {
+      if (this.downVoteButton) {
+        this.db.collection('memy').doc(id).update({ocena: this.memOcena +1});
+        this.downVoteButton = null;
+      } else {
+        this.downVoteButton = true;
+        this.upVoteButton = null;
+        this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) - 1});
+      }
     }
-  }
+
 }

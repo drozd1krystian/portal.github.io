@@ -1,3 +1,4 @@
+import { SingleMemComponent } from './../components/single-mem/single-mem.component';
 import { SekcjaZwierzetaComponent } from './../components/sekcja-zwierzeta/sekcja-zwierzeta.component';
 import { PolitykaComponent } from './../components/polityka/polityka.component';
 import { SekcjaHistoryjkiComponent } from './../components/sekcja-historyjki/sekcja-historyjki.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'historyjki', component: SekcjaHistoryjkiComponent},
   { path: 'polityka', component: PolitykaComponent},
   { path: 'zwierzeta', component: SekcjaZwierzetaComponent},
+  { path: 'mem/:id', component: SingleMemComponent}
 ];
 
 @NgModule({
