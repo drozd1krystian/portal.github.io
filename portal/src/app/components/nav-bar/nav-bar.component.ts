@@ -10,16 +10,13 @@ import { unescapeIdentifier } from '@angular/compiler';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  userZbazy;
-  urlAwatara;
+
   constructor(public authService: AuthService, private router: Router, public ffs: FireStoreServicesService) {
-
-
-
 
   }
 
   ngOnInit() {
+
 
   }
 

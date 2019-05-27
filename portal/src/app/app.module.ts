@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { ResetPasswordComponent } from './components/authentication/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/authentication/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './components/authentication/verify-email/verify-email.component';
 import { SignUpComponent } from './components/authentication/sign-up/sign-up.component';
 
 import { MDBBootstrapModule} from 'angular-bootstrap-md'; // Boostrap
@@ -39,11 +38,10 @@ import { SekcjaNajlepszeComponent } from './components/sekcja-najlepsze/sekcja-n
 import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-najnowsze.component';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import {AuthGuardService} from './services/authorization/auth.guard.service';
-import { FireStoreServicesService } from './services/fire-store-services.service';
-import { Observable } from 'rxjs';
 import { SekcjaAdminComponent } from './components/administrator/sekcja-admin/sekcja-admin.component';
 import { PrzegladMemowComponent } from './components/administrator/przeglad-memow/przeglad-memow.component';
 import { SingleMemComponent } from './components/single-mem/single-mem.component';
+import { ZarzadzanieUseramiComponent } from './components/administrator/zarzadzanie-userami/zarzadzanie-userami.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +49,6 @@ import { SingleMemComponent } from './components/single-mem/single-mem.component
     LoginComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent,
     SignUpComponent,
     NavBarComponent,
     LeftColumnComponent,
@@ -72,6 +69,7 @@ import { SingleMemComponent } from './components/single-mem/single-mem.component
     SekcjaAdminComponent,
     PrzegladMemowComponent,
     SingleMemComponent,
+    ZarzadzanieUseramiComponent,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   imports: [

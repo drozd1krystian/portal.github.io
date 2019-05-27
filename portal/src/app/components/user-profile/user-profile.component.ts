@@ -24,12 +24,7 @@ export class UserProfileComponent implements OnInit {
     public afs: AngularFirestore,
     public ffs: FireStoreServicesService) {
     this.userZbazy = ffs.getUser(this.authService.userData.uid);
-    this.userZbazy.forEach(arr => {
-
-      console.log(arr[0].displayName);
-    });
-  }
-
+    }
 
   ngOnInit() {
   }
