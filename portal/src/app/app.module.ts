@@ -39,10 +39,11 @@ import { SekcjaNajlepszeComponent } from './components/sekcja-najlepsze/sekcja-n
 import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-najnowsze.component';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import {AuthGuardService} from './services/authorization/auth.guard.service';
+import { FireStoreServicesService } from './services/fire-store-services.service';
+import { Observable } from 'rxjs';
+import { SekcjaAdminComponent } from './components/administrator/sekcja-admin/sekcja-admin.component';
+import { PrzegladMemowComponent } from './components/administrator/przeglad-memow/przeglad-memow.component';
 import { SingleMemComponent } from './components/single-mem/single-mem.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -68,8 +69,9 @@ import { SingleMemComponent } from './components/single-mem/single-mem.component
     SekcjaNiesmieszneComponent,
     SekcjaNajlepszeComponent,
     SekcjaNajnowszeComponent,
+    SekcjaAdminComponent,
+    PrzegladMemowComponent,
     SingleMemComponent,
-
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   imports: [
