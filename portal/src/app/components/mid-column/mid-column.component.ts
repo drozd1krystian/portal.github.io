@@ -36,7 +36,7 @@ export class MidColumnComponent implements OnInit {
   }
 
   getBatch(offset) {
-    console.log(offset);
+   // console.log(offset);
     return this.db
       .collection('memy', ref =>
         ref

@@ -39,8 +39,8 @@ import { SekcjaNajlepszeComponent } from './components/sekcja-najlepsze/sekcja-n
 import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-najnowsze.component';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import {AuthGuardService} from './services/authorization/auth.guard.service';
-import { FireStoreServicesService } from './services/fire-store-services.service';
-import { Observable } from 'rxjs';
+import { SingleMemComponent } from './components/single-mem/single-mem.component';
+
 
 
 
@@ -68,6 +68,7 @@ import { Observable } from 'rxjs';
     SekcjaNiesmieszneComponent,
     SekcjaNajlepszeComponent,
     SekcjaNajnowszeComponent,
+    SingleMemComponent,
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
@@ -84,7 +85,7 @@ import { Observable } from 'rxjs';
     FormsModule,
     JwSocialButtonsModule
   ],
-  providers: [AuthService, MidColumnComponent, AuthGuardService],
+  providers: [AuthService, MidColumnComponent, AuthGuardService, SingleMemComponent, MemComponent],
   bootstrap: [AppComponent],
 
 })

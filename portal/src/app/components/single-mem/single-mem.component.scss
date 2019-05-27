@@ -1,4 +1,14 @@
+body{
+  overflow-y:auto;
+  margin:0 auto;
+}
+.post-container-single{
+  width:550px !important;
+  margin:0 auto;
+  margin-top:30px;
+}
 .opis-posta{
+  margin-left:20px;
   height:70px;
   & img{
     width:20px;
@@ -20,12 +30,13 @@
   }
 }
 .post{
-  margin-top:20px;
+  margin-top:50px;
 }
 .post img{
   max-width: 100%;
   display:block;
   margin:0 auto;
+  margin-bottom:30px;
 }
 .buttons{
   width:630px;
@@ -39,19 +50,25 @@
   outline:none;
   border:1px solid grey;
   border-radius: 5px;
-
+  }
+  .facebook{
+    margin-right:20px;
+    margin-left:100px;
+  }
 }
-  .facebook, .twitter{
-    float:right;
-    margin-right:0px;
-    width:110px;
-    color:white;
-  }
-  p{
-    margin-top:20px;
-    margin-bottom:2px;
-  }
+
 .clicked{
-  color:blue;
-  }
+   color:blue;
+}
+cdk-virtual-scroll-viewport{
+  margin-top:50px;
+  width:100%;
+}
+
+// Komentarze //
+.komentarze{
+  width:550px;
+  margin:0 auto;
+  margin-bottom:20px;
+  border-top: 1px solid #ddd;
 }
