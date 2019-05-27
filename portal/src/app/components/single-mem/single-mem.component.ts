@@ -1,6 +1,6 @@
 import { MemComponent } from './../mem/mem.component';
 import { FireStoreServicesService } from './../../services/fire-store-services.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -9,10 +9,10 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-single-mem',
   templateUrl: './single-mem.component.html',
-  styleUrls: ['./single-mem.component.scss']
+  styleUrls: ['./single-mem.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SingleMemComponent implements OnInit {
-  //singleMem;
   memObserv: Observable<any[]>;
   docId;
   upVoteButton = this.m.upVoteButton;

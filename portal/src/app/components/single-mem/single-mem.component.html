@@ -1,3 +1,4 @@
+<app-left-column></app-left-column>
 <div class ="post-container-single" *ngIf="memObserv | async as singleMem " [style.height.px]="[m.getSize(singleMem[0].link)+250]">
   <div class ="opis-posta" >
     <img src="{{singleMem[0].awatarTworcy ? singleMem[0].awatarTworcy : '/assets/dummy-user.png'}}" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
@@ -18,13 +19,23 @@
       <tweet url="{{singleMem[0].link}}" class ="twitter" text="Najlepszy mem!"></tweet>
     </div>
   </div>
-  <cdk-virtual-scroll-viewport [style.height.px]="650" itemSize="100">
+
     <div class ="post" [style.height.px]="[m.getSize(singleMem[0].link)]">
       <img src = {{singleMem[0].link}} alt ="">
     </div>
-  </cdk-virtual-scroll-viewport>
 </div>
 
 <div class = "komentarze">
+  <div class ="dodaj-komentarz">
+    <div class ="avatar">
 
+    </div>
+    <div class ="wiadomosc">
+
+    </div>
+  </div>
+  <div class ="komentarz">
+
+  </div>
 </div>
+
