@@ -51,6 +51,17 @@ export class FireStoreServicesService {
     }));
     return docId;
   }
+  public getUser(userId: string) {
+    const userzy = this.db.collection('users', ref => ref.where('uid', '==', userId))
+      .snapshotChanges().pipe(map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      }));
+    return userzy;
+  }
 
   // MEMY Z KATEGORII //
   getBatchKategoria(offset, kat: string) {

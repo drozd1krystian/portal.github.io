@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/authentication/auth.service';
 import { NgForm } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { merge } from 'rxjs';
-import { SourceListMap } from 'source-list-map';
+import { FireStoreServicesService } from 'src/app/services/fire-store-services.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,9 +14,18 @@ export class UserProfileComponent implements OnInit {
 
   displayNickNameChangeFormBoolean = false;
   checkIfChangeEmail = false;
+  userZbazy;
   constructor(
+
     public authService: AuthService,
-    public afs: AngularFirestore) { }
+    public afs: AngularFirestore,
+    public ffs: FireStoreServicesService) {
+    this.userZbazy = ffs.getUser(this.authService.userData.uid);
+    this.userZbazy.forEach( arr =>{
+
+      console.log(arr[0].displayName);
+    });
+  }
 
 
   ngOnInit() {
@@ -29,12 +38,7 @@ export class UserProfileComponent implements OnInit {
       .doc(this.authService.userData.uid)
       .update({ displayName: formData.value.nick }).then(value => {
 
-
-
-
-
-
-        this.authService.getUserData().displayName="wojtusiu";
+        this.authService.getUserData().displayName = "wojtusiu";
         console.log(this.authService.userData.displayName);
         console.log('updatnieto nickora');
       }).catch(value => {

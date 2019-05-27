@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { ResetPasswordComponent } from './components/authentication/reset-password/reset-password.component';
@@ -41,6 +40,7 @@ import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-n
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import {AuthGuardService} from './services/authorization/auth.guard.service';
 import { SingleMemComponent } from './components/single-mem/single-mem.component';
+
 
 
 
