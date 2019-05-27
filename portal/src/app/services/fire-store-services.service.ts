@@ -81,9 +81,8 @@ export class FireStoreServicesService {
     return this.db
       .collection('memy', ref =>
         ref
-          .where('ocena', '>=' , 100)
           .orderBy('ocena')
-          .startAfter(offset)
+          .startAfter(100)
           .limit(this.batch)
       )
       .snapshotChanges()
@@ -101,5 +100,13 @@ export class FireStoreServicesService {
   returnTheEnd(){
     return this.theEnd;
   }
+  itemSort(a, b) {
+    if (a.dataDodania < b.dataDodania) {
+      return 1;
+    } else if (a.dataDodania > b.dataDodania) {
+      return -1;
+    }
+    return 0;
+ }
 
 }

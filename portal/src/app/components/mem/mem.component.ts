@@ -42,13 +42,23 @@ export class MemComponent implements OnInit{
     return img.width;
     }
   public upVote(id) {
-    this.upVoteButton = true;
-    this.downVoteButton = null;
-    this.db.collection('memy').doc(id).update({ocena: this.memOcena + 1});
+    if (this.upVoteButton) {
+      this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) -1});
+      this.upVoteButton = null;
+    } else {
+      this.upVoteButton = true;
+      this.downVoteButton = null;
+      this.db.collection('memy').doc(id).update({ocena: this.memOcena + 1});
+    }
   }
   public downVote(id) {
-    this.upVoteButton = null;
-    this.downVoteButton = true;
-    this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) -1});
+    if (this.downVoteButton) {
+      this.db.collection('memy').doc(id).update({ocena: this.memOcena +1});
+      this.downVoteButton = null;
+    } else {
+      this.downVoteButton = true;
+      this.upVoteButton = null;
+      this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) - 1});
+    }
   }
 }
