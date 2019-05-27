@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/authentication/auth.service';
 import { MemComponent } from './../mem/mem.component';
 import { FireStoreServicesService } from './../../services/fire-store-services.service';
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
@@ -18,8 +19,9 @@ export class SingleMemComponent implements OnInit {
   upVoteButton = this.m.upVoteButton;
   downVoteButton = this.m.downVoteButton;
 
+  constructor(public asf: FireStoreServicesService, public m: MemComponent,
+              public ats: AuthService, private route: ActivatedRoute, private db: AngularFirestore) {
 
-  constructor(public asf: FireStoreServicesService, public m: MemComponent, private route: ActivatedRoute, private db: AngularFirestore) {
     this.docId = this.route.snapshot.paramMap.get('id');
     this.memObserv = asf.getDoc().pipe(map(me => {
       const l = me.filter(mem => mem.id === this.docId);
@@ -51,5 +53,4 @@ export class SingleMemComponent implements OnInit {
       this.db.collection('memy').doc(id).update({ocena: ocena - 1});
     }
   }
-
 }

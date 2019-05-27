@@ -44,6 +44,8 @@ import { Observable } from 'rxjs';
 import { SekcjaAdminComponent } from './components/administrator/sekcja-admin/sekcja-admin.component';
 import { PrzegladMemowComponent } from './components/administrator/przeglad-memow/przeglad-memow.component';
 import { SingleMemComponent } from './components/single-mem/single-mem.component';
+import { WstawKomentarzComponent } from './components/wstaw-komentarz/wstaw-komentarz.component';
+import { KomentarzeComponent } from './components/komentarze/komentarze.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { SingleMemComponent } from './components/single-mem/single-mem.component
     SekcjaAdminComponent,
     PrzegladMemowComponent,
     SingleMemComponent,
+    WstawKomentarzComponent,
+    KomentarzeComponent,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   imports: [
