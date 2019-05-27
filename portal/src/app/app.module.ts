@@ -43,8 +43,7 @@ import { FireStoreServicesService } from './services/fire-store-services.service
 import { Observable } from 'rxjs';
 import { SekcjaAdminComponent } from './components/administrator/sekcja-admin/sekcja-admin.component';
 import { PrzegladMemowComponent } from './components/administrator/przeglad-memow/przeglad-memow.component';
-
-
+import { SingleMemComponent } from './components/single-mem/single-mem.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +71,7 @@ import { PrzegladMemowComponent } from './components/administrator/przeglad-memo
     SekcjaNajnowszeComponent,
     SekcjaAdminComponent,
     PrzegladMemowComponent,
-
+    SingleMemComponent,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   imports: [
@@ -88,7 +87,7 @@ import { PrzegladMemowComponent } from './components/administrator/przeglad-memo
     FormsModule,
     JwSocialButtonsModule
   ],
-  providers: [AuthService, MidColumnComponent, AuthGuardService],
+  providers: [AuthService, MidColumnComponent, AuthGuardService, SingleMemComponent, MemComponent],
   bootstrap: [AppComponent],
 
 })

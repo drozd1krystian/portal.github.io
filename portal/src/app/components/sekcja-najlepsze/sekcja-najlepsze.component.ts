@@ -17,6 +17,8 @@ export class SekcjaNajlepszeComponent implements OnInit {
   theEnd = false;
   offset = new BehaviorSubject(null);
   infinite: Observable<any[]>;
+  best: Observable<any[]>;
+  best2: Array<any[]>;
 
   constructor(public asf: FireStoreServicesService, public mem: MidColumnComponent) {
     const batchMap = this.offset.pipe(
@@ -27,7 +29,9 @@ export class SekcjaNajlepszeComponent implements OnInit {
       }, {})
     );
     this.infinite = batchMap.pipe(map(v => Object.values(v)));
+    this.best = this.infinite.pipe(map(m => m.sort(this.asf.itemSort)));
    }
+
    nextBatch(e, offset) {
     if (this.asf.returnTheEnd) {
       return;

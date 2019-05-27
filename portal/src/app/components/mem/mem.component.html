@@ -1,21 +1,23 @@
-<div class ="opis-posta">
+<ng-container  *ngIf ="docId | async as doc">
+  <div class ="opis-posta">
 
-  <img src="{{autorAvatar ? autorAvatar : '/assets/dummy-user.png'}}" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
+    <img src="{{autorAvatar ? autorAvatar : '/assets/dummy-user.png'}}" alt="" class="img-fluid rounded-circle z-depth-0 avatar">
 
-  <span> {{memTworca}}</span> <span class ="dot"> &#183; </span> <span>{{memKategoria}}</span>
-  <br>
-  <a href ="#"><span class = "tytul"><strong> {{memTytul}} </strong></span> </a>
-</div>
+    <span> {{memTworca}}</span> <span class ="dot"> &#183; </span> <span>{{memKategoria}}</span>
+    <br>
+    <a [routerLink]="['/mem', doc[0].id]"><span class = "tytul"><strong> {{memTytul}} </strong></span> </a>
+  </div>
 
-<div class ="post" [style.height.px]="[getSize(memLink)]">
-  <img src = {{memLink}} alt ="">
-</div>
-<div class ="buttons" *ngIf ="docId | async as doc">
-  <p>{{memOcena}} punktów</p>
-  <button class ="waves light" mdbWavesEffec (click)="upVote(doc[0])" [disabled]="upVoteButton" ><i class="fas fa-arrow-up" ></i> </button>
-  <button class = "waves light" mdbWavesEffect (click)="downVote(doc[0])" [disabled]="downVoteButton"><i class="fas fa-arrow-down"></i> </button>
-  <button class = "waves light" mdbWavesEffect><i class="far fa-comment-dots"></i> </button>
-  <fb-like url={{memLink}} class ="facebook"></fb-like>
-  <tweet url="{{memLink}}" class ="twitter" text="Najlepszy mem!"></tweet>
-</div>
-<hr>
+  <div class ="post" [style.height.px]="[getSize(memLink)]">
+    <img src = {{memLink}} alt ="">
+  </div>
+  <div class ="buttons" >
+    <p>{{memOcena}} punktów</p>
+    <button class ="waves light" mdbWavesEffec (click)="upVote(doc[0].id)" [ngClass]="{clicked: upVoteButton }"><i class="fas fa-arrow-up" ></i> </button>
+    <button class = "waves light" mdbWavesEffect (click)="downVote(doc[0].id)" [ngClass]="{clicked: downVoteButton }"><i class="fas fa-arrow-down"></i> </button>
+    <button class = "waves light" mdbWavesEffect><i class="far fa-comment-dots"></i> </button>
+    <fb-like url={{memLink}} class ="facebook"></fb-like>
+    <tweet url="{{memLink}}" class ="twitter" text="Najlepszy mem!"></tweet>
+  </div>
+  <hr>
+</ng-container>

@@ -86,3 +86,6 @@ Responsywny layout:
 
 Wyswietlenie komponentu po kliknieciu buttona (przydatne do dropboxa)
 https://stackoverflow.com/questions/44264354/display-a-component-after-a-clickevent-angular-4
+
+Komentarze i lajki:
+https://stackoverflow.com/questions/48820787/getting-list-of-all-posts-with-user-like-and-total-likes-for-each-post-in-firest?rq=1&fbclid=IwAR2EqpaqTtv_RpJnLh0GdlRyaeaggNt8Md_n7mvvQwkXYhjgw29lf1jd4bI#comment84674391_48828762

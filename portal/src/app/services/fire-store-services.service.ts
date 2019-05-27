@@ -1,11 +1,9 @@
 import { MidColumnComponent } from './../components/mid-column/mid-column.component';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore} from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import {map, tap, scan, mergeMap, throttleTime} from 'rxjs/operators';
+import {map, tap, } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { Observable, BehaviorSubject } from 'rxjs';
-import {ViewChild } from '@angular/core';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Injectable({
   providedIn: 'root'
@@ -33,12 +31,24 @@ export class FireStoreServicesService {
 
   public getDocId(link) {
     const docId = this.db.collection('memy', ref => ref.where('link', '==', link).limit(1)).snapshotChanges()
-      .pipe(map(actions => {
-        return actions.map(a => {
-          const id = a.payload.doc.id;
-          return id;
-        });
-      }));
+    .pipe(map(actions =>{
+      return actions.map(a => {
+        const id = a.payload.doc.id;
+        const data = a.payload.doc.data();
+        return {id, ...data};
+      });
+    }));
+    return docId;
+  }
+
+  public getDoc() {
+    const docId = this.db.collection('memy').snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    }));
     return docId;
   }
   public getUser(userId: string) {
@@ -81,9 +91,8 @@ export class FireStoreServicesService {
     return this.db
       .collection('memy', ref =>
         ref
-          .where('ocena', '>=' , 100)
           .orderBy('ocena')
-          .startAfter(offset)
+          .startAfter(100)
           .limit(this.batch)
       )
       .snapshotChanges()
@@ -101,6 +110,14 @@ export class FireStoreServicesService {
   returnTheEnd(){
     return this.theEnd;
   }
+  itemSort(a, b) {
+    if (a.dataDodania < b.dataDodania) {
+      return 1;
+    } else if (a.dataDodania > b.dataDodania) {
+      return -1;
+    }
+    return 0;
+ }
 
   // wszyscy uzytkownicy -adminmode
   public getUsers() {
