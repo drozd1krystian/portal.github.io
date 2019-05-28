@@ -18,6 +18,8 @@
     <button class = "waves light" mdbWavesEffect><i class="far fa-comment-dots"></i> </button>
     <fb-like url={{memLink}} class ="facebook"></fb-like>
     <tweet url="{{memLink}}" class ="twitter" text="Najlepszy mem!"></tweet>
+
+    <button *ngIf="this.authService.userData.email=='admin@admin.admin'" class="btn-danger" mdbWavesEffect (click)="deleteDatMeme(doc[0].id)"> DEL </button>
   </div>
   <hr>
 </ng-container>
