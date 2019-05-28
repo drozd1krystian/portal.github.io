@@ -14,5 +14,7 @@
 
       </div>
     </div>
+    <app-komentarz-reply *ngIf ="reply" [memId]="memId" [komId] ="k.id" ></app-komentarz-reply>
+    <button  *ngIf = "!reply" (click) = "addReply()">Odpowiedz</button>
   </ul>
 </ng-container>

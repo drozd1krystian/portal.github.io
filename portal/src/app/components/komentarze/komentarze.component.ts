@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 export class KomentarzeComponent implements OnInit {
   @Input() memId: string;
   komentarze: Observable<any[]>;
+  reply = false;
   constructor(public asf: FireStoreServicesService,public ats: AuthService, private db: AngularFirestore){
   }
 
@@ -35,6 +36,9 @@ export class KomentarzeComponent implements OnInit {
   }
   trackByIdx(i){
     return i;
+  }
+ public addReply() {
+    this.reply = true;
   }
 
 }
