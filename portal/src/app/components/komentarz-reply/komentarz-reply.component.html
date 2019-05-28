@@ -1,3 +1,4 @@
+  <ng-container>
   <div class = "komentarze">
       <div class ="dodaj-komentarz">
         <div class ="avatar">
@@ -10,8 +11,9 @@
           </div>
 
           <div class ="button">
-            <button class ="wyslij" (click)= "dodajKomentarz(memId)">Wyślij</button>
+            <button class ="wyslij" (click)= "dodajKomentarz(memId) && show = true">Wyślij</button>
           </div>
         </div>
       </div>
     </div>
+  </ng-container>

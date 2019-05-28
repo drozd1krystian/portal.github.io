@@ -47,6 +47,7 @@ import { SingleMemComponent } from './components/single-mem/single-mem.component
 import { WstawKomentarzComponent } from './components/wstaw-komentarz/wstaw-komentarz.component';
 import { KomentarzeComponent } from './components/komentarze/komentarze.component';
 import { KomentarzReplyComponent } from './components/komentarz-reply/komentarz-reply.component';
+import { KomentarzOdpowiedziComponent } from './components/komentarz-odpowiedzi/komentarz-odpowiedzi.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { KomentarzReplyComponent } from './components/komentarz-reply/komentarz-
     WstawKomentarzComponent,
     KomentarzeComponent,
     KomentarzReplyComponent,
+    KomentarzOdpowiedziComponent,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   imports: [
