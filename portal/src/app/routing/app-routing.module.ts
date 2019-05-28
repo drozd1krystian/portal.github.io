@@ -13,10 +13,9 @@ import { UploaderComponent } from '../components/uploader/uploader/uploader.comp
 import { LoginComponent } from '../components/authentication/login/login.component';
 import { SignUpComponent } from '../components/authentication/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from '../components/authentication/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from '../components/authentication/verify-email/verify-email.component';
 import { UserProfileComponent } from '../components/user-profile/user-profile.component';
-import { CanActivate } from '@angular/router/src/utils/preactivation';
 import { AuthGuardService } from '../services/authorization/auth.guard.service';
+import { SekcjaAdminComponent } from '../components/administrator/sekcja-admin/sekcja-admin.component';
 
 
 const routes: Routes = [
@@ -25,7 +24,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent},
   { path: 'forgotPassword', component: ForgotPasswordComponent},
-  { path: 'verifyEmail', component: VerifyEmailComponent},
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuardService]},
   // { path: '**', component: PageNotFoundComponent },
   { path: 'smieszne', component: SekcjaSmieszneComponent},
@@ -35,7 +33,9 @@ const routes: Routes = [
   { path: 'historyjki', component: SekcjaHistoryjkiComponent},
   { path: 'polityka', component: PolitykaComponent},
   { path: 'zwierzeta', component: SekcjaZwierzetaComponent},
-  { path: 'mem/:id', component: SingleMemComponent}
+  { path: 'mem/:id', component: SingleMemComponent},
+  { path: 'admin', component: SekcjaAdminComponent}
+  //{ path: 'admin/zarzadzanieUserami', component: }
 ];
 
 @NgModule({

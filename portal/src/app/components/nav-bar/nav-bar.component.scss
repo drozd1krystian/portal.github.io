@@ -3,11 +3,13 @@
   height:60px;
   width:100%;
   margin-bottom:10px;
+  z-index: 11;
 }
 mdb-navbar{
   position:fixed;
   width:100%;
   max-width:1196px;
+  z-index: 11;
 }
 .btn {
   background-color: rgb(255, 255, 255);
@@ -20,6 +22,7 @@ mdb-navbar{
   &:hover {
     background-color: rgb(235, 240, 240);
   }
+  z-index: 11;
 }
 /* Zdjecie profilowe */
 img{

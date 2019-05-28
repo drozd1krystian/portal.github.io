@@ -12,7 +12,7 @@ import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firest
 export class AuthService {
   public userData: User = null;
   public zalogowanyPrzez = 'login/haslo';
-
+  nicker: string;
 
 
   constructor(public angularFire: AngularFireAuth,
@@ -26,16 +26,7 @@ logged in and setting up null when logged out */
     angularFire.authState.subscribe(user => {
       if (user) {
         this.userData = user;
-
         this.zalogowanyPrzez = user.providerData.shift().providerId;
-
-
-
-
-
-
-
-
       }
     });
   }
@@ -66,10 +57,16 @@ logged in and setting up null when logged out */
 
   }
 
-  signup(email: string, password: string) {
+  signup(email: string, password: string, nick: string) {
     this.angularFire.auth.createUserWithEmailAndPassword(email, password).then(user => {
       this.SendVerificationMail();
+      this.nicker=nick;
+      user.user.updateProfile({
+        displayName: nick
+
+      });
       this.setUserData(user.user);
+
       this.router.navigate(['/']);
     }).catch(err => {
       console.log(err);
@@ -77,7 +74,23 @@ logged in and setting up null when logged out */
     });
 
   }
+  setNickname() {
+    console.log('no witam');
+    console.log(this.zalogowanyPrzez);
+    return this.afs
+      .collection('users')
+      .doc(this.userData.uid)
+      .update({ displayName: this.userData.displayName }).then(value => {
 
+        console.log(this.userData.displayName);
+        console.log('updatnieto nickora');
+      }).catch(value => {
+        console.log('bugi:');
+        console.log(value);
+      });
+
+
+  }
 
 
   // Sign in with Facebook
@@ -107,7 +120,7 @@ logged in and setting up null when logged out */
 
   async SendVerificationMail() {
     await this.angularFire.auth.currentUser.sendEmailVerification();
-    this.router.navigate(['verifyEmail']);
+    window.alert("wyslano email z weryfikacja!");
   }
 
   // Reset Forggot password
@@ -135,22 +148,34 @@ logged in and setting up null when logged out */
 
   }
 
+  czyMaNick(name) {
+    if (name) {
+      return name;
+    }
+    else {
+      return this.nicker;
+    }
+
+  }
+
+
   // ustawia dane usera ktore zwroci nam system logowania, zapisuje je do zmiennej userData ale tez do bazy
   setUserData(user) {
-    console.log("ZALOGOWALEM DUPSKO")
     let userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     let userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      displayName: this.czyMaNick(user.displayName),
       photoURL: this.czyMaZdjecie(user.photoURL),
       emailVerified: user.emailVerified
     };
-    return userRef.set(userData, {
+
+    userRef.set(userData, {
       merge: true
     });
+
   }
-  // Sign out
+
 
 
   async logout() {

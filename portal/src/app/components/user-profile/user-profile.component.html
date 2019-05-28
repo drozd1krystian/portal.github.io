@@ -10,7 +10,7 @@
         <div class="media">
           <div class="awatar">
           <img class="align-self-start mr-5 img-thumbnail rounded-circle"
-            src="{{(userPojedynczy[0].photoURL) ? userPojedynczy[0].photoURL : '/assets/dummy-user.png'}}" alt="{{userPojedynczy[0].displayName}}">
+            src="{{(userPojedynczy[0].photoURL) ? userPojedynczy[0].photoURL : '/assets/dummy-user.png'}}" alt="dodaj Awatar!">
           </div>
           <div class="media-body">
             <h1><strong>{{(userPojedynczy[0].displayName) ? userPojedynczy[0].displayName : 'User'}}</strong></h1>
@@ -19,14 +19,14 @@
             <p>Email: <strong>{{userPojedynczy[0].email}}</strong></p>
             <p *ngIf="this.authService.zalogowanyPrzez!='facebook.com'||'google.com'">Email niezwerfikowany</p>
             <button *ngIf="this.authService.zalogowanyPrzez!='facebook.com'||'google.com'" type="button" mdbBtn color="info" class="dark blue lighten-1"
-            (click)="click()">
+            (click)="this.authService.SendVerificationMail()">
               Zweryfikuj e-mail
             </button>
             <button type="button" mdbBtn color="info" class="dark blue lighten-1"  (click)=displayNickNameChangeForm()>
               Zmień nick
             </button>
 
-            <button *ngIf="this.authService.zalogowanyPrzez!='facebook.com'||'google.com'" type="button" mdbBtn color="info" class="dark blue lighten-1" (click)="click()">
+            <button *ngIf="this.authService.zalogowanyPrzez!='facebook.com'||'google.com'" type="button" mdbBtn color="info" class="dark blue lighten-1" [routerLink]="['/forgotPassword']">
               Zmień hasło
             </button>
 
