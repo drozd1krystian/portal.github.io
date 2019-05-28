@@ -1,0 +1,36 @@
+ul{
+  padding-inline-start: 0px;
+  margin-bottom:50px;
+}
+.koment-container{
+  width:500px;
+  .avatar img{
+    width:50px;
+    height:50px;
+    float:left;
+  }
+  .autor{
+    width:450px;
+    font-size: 13px;
+    span{
+      margin-left:20px;
+      color:black;
+      font-weight:700;
+    }
+  }
+  .tresc-komentarza{
+    width:440px;
+    margin-left:60px;
+    .autor{
+      color:black;
+      font-weight: 700;
+    }
+    .kontent{
+      color:black;
+      word-break: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+  }
+}

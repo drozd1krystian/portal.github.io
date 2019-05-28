@@ -55,6 +55,10 @@ export class MemComponent implements OnInit{
       if (this.downVoteButton) {
         this.db.collection('memy').doc(id).update({ocena: this.memOcena +1});
         this.downVoteButton = null;
+      } else if(this.upVoteButton) {
+        this.downVoteButton = true;
+        this.upVoteButton = null;
+        this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) - 2});
       } else {
         this.downVoteButton = true;
         this.upVoteButton = null;

@@ -42,6 +42,9 @@ import { SekcjaAdminComponent } from './components/administrator/sekcja-admin/se
 import { PrzegladMemowComponent } from './components/administrator/przeglad-memow/przeglad-memow.component';
 import { SingleMemComponent } from './components/single-mem/single-mem.component';
 import { ZarzadzanieUseramiComponent } from './components/administrator/zarzadzanie-userami/zarzadzanie-userami.component';
+import { WstawKomentarzComponent } from './components/wstaw-komentarz/wstaw-komentarz.component';
+import { KomentarzeComponent } from './components/komentarze/komentarze.component';
+import { KomentarzReplyComponent } from './components/komentarz-reply/komentarz-reply.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +73,9 @@ import { ZarzadzanieUseramiComponent } from './components/administrator/zarzadza
     PrzegladMemowComponent,
     SingleMemComponent,
     ZarzadzanieUseramiComponent,
+    WstawKomentarzComponent,
+    KomentarzeComponent,
+    KomentarzReplyComponent,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   imports: [
