@@ -146,8 +146,7 @@ console.log("status czyAwatar = "+this.czyAwatar);
             kategoria: this.rodzaj,
             tworca: this.authService.userData.displayName,
             dataDodania: new Date(),
-
-            awatarTworcy: this.ffs.zwrocAwatar(this.authService.userData.uid)
+            awatarTworcy: this.authService.userData.photoURL
           }).then(value => {
             window.alert('Upload zakończony sukcesem!');
             this.router.navigate(['/']);
