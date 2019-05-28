@@ -1,0 +1,19 @@
+
+  <div class = "komentarze">
+
+    <div class ="dodaj-komentarz">
+      <div class ="avatar">
+        <img src="{{awatar ? awatar : '/assets/dummy-user.png'}}">
+      </div>
+
+      <div class ="wiadomosc">
+        <div class ="tresc">
+          <textarea id ="koment" [(ngModel)]="wiadomosc" placeholder="Wpisz swój komentarz tutaj!"></textarea>
+        </div>
+
+        <div class ="button">
+          <button class ="wyslij" (click)= "dodajKomentarz(memId)">Wyślij</button>
+        </div>
+      </div>
+    </div>
+  </div>
