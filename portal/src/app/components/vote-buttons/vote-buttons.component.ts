@@ -1,96 +1,100 @@
 import { map, filter } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/authentication/auth.service';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Component, OnInit, Input } from '@angular/core';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-vote-buttons',
   templateUrl: './vote-buttons.component.html',
   styleUrls: ['./vote-buttons.component.scss']
 })
-export class VoteButtonsComponent implements OnInit {
-  @Input() docId;
+export class VoteButtonsComponent implements OnInit{
+  @Input() docId: string;
   @Input() memOcena;
   upVoteButton;
   downVoteButton;
-  liked;
-  unliked;
+
   constructor(public db: AngularFirestore, private ast: AuthService) { }
 
   ngOnInit() {
-    this.sprawdzPolubione();
-    this.sprawdzNielubiane();
-  }
-  public sprawdzPolubione(){
-    this.liked = this.db.collection('user').doc(this.ast.userData.uid)
-    .collection('polubione', ref => ref.where('mem_id', '==', this.docId) )
-     .snapshotChanges()
-     .pipe(map(value =>{
-       return value.map(liked =>{
-         const id = liked.payload.doc.id;
-         return id;
-       });
-     }));
-  }
-  public sprawdzNielubiane(){
-    this.liked = this.db.collection('user').doc(this.ast.userData.uid)
-    .collection('polubione', ref => ref.where('mem_id', '==', this.docId) )
-     .snapshotChanges()
-     .pipe(map(value =>{
-       return value.map(liked =>{
-         const id = liked.payload.doc.id;
-         return id;
-       });
-     }));
+    const liked: AngularFirestoreDocument<any> = this.db.collection('users')
+    .doc(this.ast.userData.uid).collection('polubione').doc(this.docId);
+    liked.get().subscribe(snap => {
+    if (snap.exists) {
+      this.upVoteButton = true;
+    }
+  });
+    const unliked: AngularFirestoreDocument<any> = this.db.collection('users')
+     .doc(this.ast.userData.uid).collection('nielubiane').doc(this.docId);
+
+    unliked.get().subscribe(snap => {
+        if (snap.exists) {
+          this.downVoteButton = true;
+        }
+        });
   }
 
-  public checkButtons(liked, notLiked){
-    if (liked != null) {
-      this.upVoteButton = true;
-    } else if(notLiked != null){
-      this.downVoteButton = true;
-    }
-  }
-  public upVote(id, likedId) {
+  public upVote(id) {
     if (this.upVoteButton) {
+      this.db.collection('users').doc(this.ast.userData.uid).collection('polubione')
+      .doc(this.docId).delete();
       this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) -1});
       this.upVoteButton = null;
-      this.db.collection('memy').doc(this.docId).collection('polubione').doc(likedId).delete();
     } else if(this.downVoteButton){
+      this.db.collection('users').doc(this.ast.userData.uid).collection('nielubiane')
+      .doc(this.docId).delete();
+
+      this.db.collection('users').doc(this.ast.userData.uid).collection('polubione')
+    .doc(this.docId).set({
+      mem_id: this.docId
+    });
       this.upVoteButton = true;
       this.downVoteButton = false;
       this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) + 2});
-      this.db.collection('memy').doc(id).collection('polubione').add({
-        mem_id: this.docId
-      });
+
     } else {
+      this.db.collection('users').doc(this.ast.userData.uid).collection('nielubiane')
+      .doc(this.docId).delete();
+
+      this.db.collection('users').doc(this.ast.userData.uid).collection('polubione')
+    .doc(this.docId).set({
+      mem_id: this.docId
+    });
       this.upVoteButton = true;
       this.downVoteButton = null;
       this.db.collection('memy').doc(id).update({ocena: this.memOcena + 1});
-      this.db.collection('memy').doc(id).collection('polubione').add({
-        mem_id: this.docId
-      });
     }
   }
-  public downVote(id, unlikedId) {
+  public downVote(id) {
     if (this.downVoteButton) {
+      this.db.collection('users').doc(this.ast.userData.uid).collection('nielubiane')
+        .doc(this.docId).delete();
+
       this.db.collection('memy').doc(id).update({ocena: this.memOcena +1});
       this.downVoteButton = null;
-      this.db.collection('memy').doc(this.docId).collection('nielubiane').doc(unlikedId).delete();
     } else if(this.upVoteButton) {
+      this.db.collection('users').doc(this.ast.userData.uid).collection('polubione')
+        .doc(this.docId).delete();
+
+      this.db.collection('users').doc(this.ast.userData.uid).collection('nielubiane')
+        .doc(this.docId).set({
+          mem_id: this.docId
+        });
       this.downVoteButton = true;
       this.upVoteButton = null;
       this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) - 2});
-      this.db.collection('memy').doc(id).collection('nielubiane').add({
-        mem_id: this.docId
-      });
+
     } else {
+      this.db.collection('users').doc(this.ast.userData.uid).collection('polubione')
+        .doc(this.docId).delete();
+
+      this.db.collection('users').doc(this.ast.userData.uid).collection('nielubiane')
+        .doc(this.docId).set({
+          mem_id: this.docId
+        });
       this.downVoteButton = true;
       this.upVoteButton = null;
       this.db.collection('memy').doc(id).update({ocena: parseInt(this.memOcena) - 1});
-      this.db.collection('memy').doc(id).collection('nielubiane').add({
-        mem_id: this.docId
-      });
     }
   }
 }
