@@ -7,7 +7,7 @@
       <br>
       <span class = "tytul"><strong> {{singleMem[0].tytul}} </strong></span>
       <div class ="buttons">
-        <ng-container *ngIf = "user">
+        <ng-container *ngIf = "this.ats.userData">
         <app-vote-buttons [docId]="docId" [memOcena]="singleMem[0].ocena"> </app-vote-buttons>
         </ng-container>
         <span >{{singleMem[0].ocena}} punktów</span>
@@ -18,7 +18,7 @@
       <div class ="post" [style.height.px]="[m.getSize(singleMem[0].link)]">
         <img src = {{singleMem[0].link}} alt ="">
       </div>
-      <ng-container *ngIf = "user">
+      <ng-container *ngIf = "this.ats.userData">
         <app-wstaw-komentarz [memId]="singleMem[0].id"></app-wstaw-komentarz>
       </ng-container>
       <p class ="p"> Komentarze</p>

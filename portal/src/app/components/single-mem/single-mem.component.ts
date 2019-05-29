@@ -18,7 +18,6 @@ export class SingleMemComponent implements OnInit {
   docId;
   upVoteButton;
   downVoteButton;
-  user;
   constructor(public asf: FireStoreServicesService, public m: MemComponent,
               public ats: AuthService, private route: ActivatedRoute, private db: AngularFirestore) {
 
@@ -30,7 +29,6 @@ export class SingleMemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.ats.isLoggedIn;
   }
   public upVote(id, ocena) {
 

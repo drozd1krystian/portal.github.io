@@ -18,7 +18,6 @@ export class MemComponent implements OnInit{
   @Input() autorAvatar: string;
   @Input() awatarTworcy: string;
   docId: any;
-  user;
   upVoteButton: boolean;
   downVoteButton = null;
   constructor(public asf: FireStoreServicesService, private db: AngularFirestore, public ats: AuthService) {
@@ -26,7 +25,6 @@ export class MemComponent implements OnInit{
 
   ngOnInit() {
     this.docId = this.asf.getDocId(this.memLink);
-    this.user = this.ats.isLoggedIn;
   }
 
   getSize(url){
