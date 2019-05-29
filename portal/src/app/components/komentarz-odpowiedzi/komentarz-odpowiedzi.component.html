@@ -11,16 +11,13 @@
         <div class = "kontent">
             {{k.wiadomosc}}
         </div>
-
       </div>
     </div>
-    <ng-container *ngIf= "k.show" >
-     <app-komentarz-reply [memId]="memId" [komId] ="k.id"></app-komentarz-reply>
+    <ng-container *ngIf= "k.show">
+     <app-komentarz-reply [memId]="memId" [komId] ="komId" ></app-komentarz-reply>
     </ng-container>
-      <button  *ngIf = "!k.show" (click) = "k.show = true && k.showReply = true">Odpowiedz</button>
-    <ng-container *ngIf= "k.showReply">
-      <app-komentarz-odpowiedzi [memId]="memId" [komId] ="k.id" ></app-komentarz-odpowiedzi>
-     </ng-container>
-      <button  *ngIf = "!k.showReply" (click) = "k.showReply = true">Odpowiedzi</button>
+    <div class ="button-odpowiedz">
+      <button  *ngIf = "!k.show" (click) = "k.show = true">Odpowiedz</button>
+    </div>
   </ul>
 </ng-container>

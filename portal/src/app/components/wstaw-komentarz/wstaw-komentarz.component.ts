@@ -25,10 +25,11 @@ export class WstawKomentarzComponent implements OnInit {
     this.db.collection('users').doc(this.ats.userData.uid).ref.get().then(value => {
       const data = value.data();
       this.db.collection('memy').doc(memId).collection('komentarze').add({
+        odpowiedzi: false,
         awatar: data.photoURL,
         user: data.displayName,
         wiadomosc: this.wiadomosc,
-        komenatrze: {}
+        data: new Date()
       });
     });
   }

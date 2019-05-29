@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/authentication/auth.service';
+import { keyframes } from '@angular/animations';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 @Component({
   selector: 'app-komentarz-reply',
@@ -13,6 +15,7 @@ export class KomentarzReplyComponent implements OnInit {
   @Input() komId;
   @Input() memId;
   awatar;
+  show = false;
 
   constructor(public db: AngularFirestore, public ats: AuthService) {
   }
@@ -31,6 +34,7 @@ export class KomentarzReplyComponent implements OnInit {
         awatar: data.photoURL,
         user: data.displayName,
         wiadomosc: this.wiadomosc,
+        data: new Date()
       });
     });
   }
