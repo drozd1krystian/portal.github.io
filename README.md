@@ -48,7 +48,7 @@ Jeśli strona zdobędzie użytkowników, to sama będzie się promować poprzez 
 ![Diagram ERD](https://github.com/drozd1krystian/drozd1krystian.github.io/blob/master/ERD_portal.jpg)
 
 
-## Portal:
+## Portal opis wyglądu:
 - Administrator
 
 Na portalu administrator ma rozszerzone możliwości oprócz standardowych funkcjonalności użytkownika, a mianowicie banowanie użytkowników, kasowanie niewłaściwych memów, kasowanie komentarzy.
@@ -60,16 +60,24 @@ Na portalu administrator ma rozszerzone możliwości oprócz standardowych funkc
 - Użytkownik
 
 Ma możliwość komentowania postów, oceniania obrazków, dodawania nowych postów do wybranej kategorii. Każdy mem posiada swoje komentarze oraz możliwość udostępnienia obrazka na innym portalu jak Facebook czy Twitter.
-Konto można stworzyć bezpośrednio na portalu wpisując niezbędne dane lub też używając konta Google/Facebooka.
+Konto można stworzyć bezpośrednio na portalu wpisując niezbędne dane lub też używając konta Google/Facebooka. W razie zapomnienia hasła jest możliwość jego zresetowania.
+
+W profilu użytkownika, jeśli jesteśmy zalogowani za pomocą loginu i hasła, mamy możliwość zmiany awatara, hasła, nicku.
+Jeśli jesteśmy zalogowani za pomocą zewnętrznego dostawcy, np. Facebook bądź Twitter, możemy zmienić tylko nick.
 
 ![Profil_uzytkownika](https://github.com/drozd1krystian/portal.github.io/blob/master/profil_uzytkownika.png)
+
 ![Aktualnosci](https://github.com/drozd1krystian/portal.github.io/blob/master/aktualnosci.png)
+
 ![Upload](https://github.com/drozd1krystian/portal.github.io/blob/master/upload.PNG)
+
 ![Komentarze](https://github.com/drozd1krystian/portal.github.io/blob/master/komentarze.png)
+
+![RestHasla](https://github.com/drozd1krystian/portal.github.io/blob/master/image.png)
 
 - Gość
 
-Jako osoba spoza grona użytkowników portalu może przeglądać treści portalu oraz w każdej chwili zarejestrować się na nim, aby poszerzyć swoje możliwości użytkowe.
+Jako osoba spoza grona użytkowników portalu może przeglądać treści portalu oraz w każdej chwili zarejestrować się na nim, aby poszerzyć swoje możliwości użytkowe. Może zalogować/zarejestrować się za pomocą Facebooka bądź Google.
 
 ![Rejestracja](https://github.com/drozd1krystian/portal.github.io/blob/master/rejestracja.PNG)
 
