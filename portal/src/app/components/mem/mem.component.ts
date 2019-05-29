@@ -2,7 +2,6 @@ import { AuthService } from 'src/app/services/authentication/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FireStoreServicesService } from './../../services/fire-store-services.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from 'src/app/services/authentication/auth.service';
 import { Router } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 
@@ -35,11 +34,11 @@ export class MemComponent implements OnInit {
   }
 
   deleteDatMeme(id: string) {
-    this.db.collection("memy").doc(id).delete().then(function () {
+    this.db.collection('memy').doc(id).delete().then(a => {
 
-      console.log("mem out");
-    }).catch(function (error) {
-      console.error("Error removing document: ", error);
+      console.log('mem out');
+    }).catch(error =>  {
+      console.error('Error removing document: ', error);
     });
 
     this.router.navigate(['/']);

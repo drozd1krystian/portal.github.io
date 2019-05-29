@@ -13,14 +13,15 @@
   </div>
   <div class ="buttons" >
     <p>{{memOcena}} punktów</p>
-    <ng-container *ngIf = "this.ats.userData">
+    <ng-container *ngIf = "this.authService.userData">
     <app-vote-buttons [docId]="doc[0].id" [memOcena]="memOcena"> </app-vote-buttons>
     </ng-container>
     <button class = "waves light" [routerLink]="['/mem', doc[0].id]" mdbWavesEffect><i class="far fa-comment-dots"></i></button>
     <fb-like url={{memLink}} class ="facebook"></fb-like>
     <tweet url="{{memLink}}" class ="twitter" text="Najlepszy mem!"></tweet>
-
-    <button *ngIf="this.authService.userData.email=='admin@admin.admin'" class="btn-danger" mdbWavesEffect (click)="deleteDatMeme(doc[0].id)"> DEL </button>
+    <ng-container *ngIf = "this.authService.userData">
+      <button *ngIf="this.authService.userData.email=='admin@admin.admin'" class="btn-danger" mdbWavesEffect (click)="deleteDatMeme(doc[0].id)"> DEL </button>
+    </ng-container>
   </div>
   <hr>
 
