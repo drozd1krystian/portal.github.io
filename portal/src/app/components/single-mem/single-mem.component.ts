@@ -30,33 +30,5 @@ export class SingleMemComponent implements OnInit {
 
   ngOnInit() {
   }
-  public upVote(id, ocena) {
 
-    if (this.upVoteButton) {
-      this.db.collection('memy').doc(id).update({ocena: ocena -1});
-      this.upVoteButton = null;
-    } else if(this.downVoteButton) {
-      this.downVoteButton = null;
-      this.upVoteButton = true;
-      this.db.collection('memy').doc(id).update({ocena: parseInt(ocena) + 2 });
-    } else {
-      this.downVoteButton = null;
-      this.upVoteButton = true;
-      this.db.collection('memy').doc(id).update({ocena: parseInt(ocena) + 1});
-    }
-  }
-  public downVote(id, ocena) {
-    if (this.downVoteButton) {
-      this.db.collection('memy').doc(id).update({ocena: ocena + 1});
-      this.downVoteButton = null;
-    } else if(this.upVoteButton) {
-      this.downVoteButton = true;
-      this.upVoteButton = null;
-      this.db.collection('memy').doc(id).update({ocena: parseInt(ocena) - 2});
-    } else {
-      this.downVoteButton = true;
-      this.upVoteButton = null;
-      this.db.collection('memy').doc(id).update({ocena: parseInt(ocena) - 1});
-    }
-  }
 }

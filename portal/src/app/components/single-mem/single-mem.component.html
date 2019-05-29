@@ -8,7 +8,7 @@
       <span class = "tytul"><strong> {{singleMem[0].tytul}} </strong></span>
       <div class ="buttons">
         <ng-container *ngIf = "this.ats.userData">
-        <app-vote-buttons [docId]="docId" [memOcena]="singleMem[0].ocena"> </app-vote-buttons>
+          <app-vote-buttons [docId]="docId" [memOcena]="singleMem[0].ocena"> </app-vote-buttons>
         </ng-container>
         <span >{{singleMem[0].ocena}} punktów</span>
         <fb-like url={{singleMem[0].link}} class ="facebook"></fb-like>
@@ -18,9 +18,8 @@
       <div class ="post" [style.height.px]="[m.getSize(singleMem[0].link)]">
         <img src = {{singleMem[0].link}} alt ="">
       </div>
-      <ng-container *ngIf = "this.ats.userData">
-        <app-wstaw-komentarz [memId]="singleMem[0].id"></app-wstaw-komentarz>
-      </ng-container>
+      <p class ="nieZalogowany" *ngIf="!this.ats.userData" [routerLink]="['/login']">Zaloguj się aby dodać komentarz!</p>
+      <app-wstaw-komentarz *ngIf = "this.ats.userData" [memId]="singleMem[0].id"></app-wstaw-komentarz>
       <p class ="p"> Komentarze</p>
       <app-komentarze [memId]="singleMem[0].id"></app-komentarze>
   </div>

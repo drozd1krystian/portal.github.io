@@ -20,10 +20,12 @@ export class KomentarzeComponent implements OnInit {
 
   ngOnInit() {
     this.pobierzeKomentarze();
-    this.db.collection('users').doc(this.ats.userData.uid).ref.get().then(value => {
-      const data = value.data();
-      this.user = data.displayName;
-    });
+    if (this.ats.userData != null){
+      this.db.collection('users').doc(this.ats.userData.uid).ref.get().then(value => {
+        const data = value.data();
+        this.user = data.displayName;
+      });
+    }
   }
 
   public pobierzeKomentarze(){
