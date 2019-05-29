@@ -1,0 +1,10 @@
+<ng-container *ngIf="liked | async as l">
+<button class ="waves light" mdbWavesEffec (click)="upVote(docId, l[0].id)"
+  [ngClass]="{clicked: upVoteButton }"><i class="fas fa-arrow-up" ></i>
+  </button>
+</ng-container>
+
+<ng-container *ngIf = "unliked | async as u">
+<button class = "waves light" mdbWavesEffect (click)="downVote(docId, u[0].id)"
+  [ngClass]="{clicked: downVoteButton }"><i class="fas fa-arrow-down"></i> </button>
+</ng-container>

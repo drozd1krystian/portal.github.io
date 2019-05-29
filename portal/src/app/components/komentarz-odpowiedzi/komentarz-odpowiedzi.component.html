@@ -7,6 +7,9 @@
       <div class = "tresc-komentarza">
         <div class ="autor">
            {{k.user}}
+           <ng-container *ngIf = "k.user == user">
+           <button class ="usun" (click)= "usunKomentarz(memId, komId, k.id)">Usun</button>
+          </ng-container>
         </div>
         <div class = "kontent">
             {{k.wiadomosc}}

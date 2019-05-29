@@ -48,6 +48,7 @@ import { WstawKomentarzComponent } from './components/wstaw-komentarz/wstaw-kome
 import { KomentarzeComponent } from './components/komentarze/komentarze.component';
 import { KomentarzReplyComponent } from './components/komentarz-reply/komentarz-reply.component';
 import { KomentarzOdpowiedziComponent } from './components/komentarz-odpowiedzi/komentarz-odpowiedzi.component';
+import { VoteButtonsComponent } from './components/vote-buttons/vote-buttons.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { KomentarzOdpowiedziComponent } from './components/komentarz-odpowiedzi/
     KomentarzeComponent,
     KomentarzReplyComponent,
     KomentarzOdpowiedziComponent,
+    VoteButtonsComponent,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   imports: [

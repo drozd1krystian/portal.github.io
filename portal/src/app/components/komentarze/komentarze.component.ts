@@ -13,13 +13,17 @@ import { map } from 'rxjs/operators';
 export class KomentarzeComponent implements OnInit {
   @Input() memId: string;
   komentarze: Observable<any[]>;
-
+  user;
   constructor(public asf: FireStoreServicesService,public ats: AuthService, private db: AngularFirestore){
   }
 
 
   ngOnInit() {
     this.pobierzeKomentarze();
+    this.db.collection('users').doc(this.ats.userData.uid).ref.get().then(value => {
+      const data = value.data();
+      this.user = data.displayName;
+    });
   }
 
   public pobierzeKomentarze(){
@@ -36,6 +40,10 @@ export class KomentarzeComponent implements OnInit {
   }
   trackByIdx(i){
     return i;
+  }
+  public usunKomentarz(memId, komId) {
+    this.db.collection('memy').doc(memId).collection('komentarze')
+      .doc(komId).delete();
   }
 
 }

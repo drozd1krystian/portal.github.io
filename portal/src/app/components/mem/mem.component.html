@@ -15,9 +15,10 @@
     <p>{{memOcena}} punktów</p>
     <button class ="waves light" mdbWavesEffec (click)="upVote(doc[0].id)" [ngClass]="{clicked: upVoteButton }"><i class="fas fa-arrow-up" ></i> </button>
     <button class = "waves light" mdbWavesEffect (click)="downVote(doc[0].id)" [ngClass]="{clicked: downVoteButton }"><i class="fas fa-arrow-down"></i> </button>
-    <button class = "waves light" mdbWavesEffect><i class="far fa-comment-dots"></i> </button>
+    <button class = "waves light" [routerLink]="['/mem', doc[0].id]" mdbWavesEffect><i class="far fa-comment-dots"></i></button>
     <fb-like url={{memLink}} class ="facebook"></fb-like>
     <tweet url="{{memLink}}" class ="twitter" text="Najlepszy mem!"></tweet>
   </div>
   <hr>
+
 </ng-container>
