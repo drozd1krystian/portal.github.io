@@ -52,7 +52,7 @@ Jeśli strona zdobędzie użytkowników, to sama będzie się promować poprzez 
 - Administrator
 Na portalu administrator ma rozszerzone możliwości oprócz standardowych funkcjonalności użytkownika, a mianowicie banowanie użytkowników, kasowanie niewłaściwych memów, kasowanie komentarzy.
 
-###Profil admina
+### Profil admina
 ![Profil admina](https://github.com/drozd1krystian/drozd1krystian.github.io/blob/master/profil_admina.png)
 ![Admin_logowanie](https://github.com/drozd1krystian/drozd1krystian.github.io/blob/master/admin_logowanie.png)
 ![Uzytkownicy_ban](https://github.com/drozd1krystian/drozd1krystian.github.io/blob/master/uzytkownicy_ban.png)
