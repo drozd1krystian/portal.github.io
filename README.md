@@ -56,18 +56,18 @@ Na portalu administrator ma rozszerzone możliwości oprócz standardowych funkc
 ![Admin_logowanie](https://github.com/drozd1krystian/portal.github.io/blob/master/admin_logowanie.png)
 ![Uzytkownicy_ban](https://github.com/drozd1krystian/portal.github.io/blob/master/uzytkownicy_ban.png)
 
--Użytkownik
+- Użytkownik
 Ma możliwość komentowania postów, oceniania obrazków, dodawania nowych postów do wybranej kategorii. Każdy mem posiada swoje komentarze oraz możliwość udostępnienia obrazka na innym portalu jak Facebook czy Twitter.
 Konto można stworzyć bezpośrednio na portalu wpisując niezbędne dane lub też używając konta Google/Facebooka.
 
 ![Profil_uzytkownika](https://github.com/drozd1krystian/portal.github.io/blob/master/profil_uzytkownika.png)
 ![Aktualnosci](https://github.com/drozd1krystian/portal.github.io/blob/master/aktualnosci.png)
-![Upload](https://github.com/drozd1krystian/portal.github.io/blob/master/upload.png)
+![Upload](https://github.com/drozd1krystian/portal.github.io/blob/master/upload.PNG)
 ![Komentarze](https://github.com/drozd1krystian/portal.github.io/blob/master/komentarze.png)
 
--Gość
+- Gość
 Jako osoba spoza grona użytkowników portalu może przeglądać treści portalu oraz w każdej chwili zarejestrować się na nim, aby poszerzyć swoje możliwości użytkowe.
-![Rejestracja](https://github.com/drozd1krystian/portal.github.io/blob/master/rejestracja.png)
+![Rejestracja](https://github.com/drozd1krystian/portal.github.io/blob/master/rejestracja.PNG)
 
 ## Tutoriale, źródła:
 
