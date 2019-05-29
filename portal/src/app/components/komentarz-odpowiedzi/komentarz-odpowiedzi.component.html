@@ -1,0 +1,26 @@
+<ng-container *ngIf="komentarze |async as kom">
+  <ul *ngFor="let k of kom;let i = index; trackByIdx">
+    <div class ="koment-container">
+      <div class = "avatar">
+          <img src="{{k.awatar ? k.awatar : '/assets/dummy-user.png'}}">
+      </div>
+      <div class = "tresc-komentarza">
+        <div class ="autor">
+           {{k.user}}
+           <ng-container *ngIf = "k.user == user">
+           <button class ="usun" (click)= "usunKomentarz(memId, komId, k.id)">Usun</button>
+          </ng-container>
+        </div>
+        <div class = "kontent">
+            {{k.wiadomosc}}
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf= "k.show">
+     <app-komentarz-reply [memId]="memId" [komId] ="komId" ></app-komentarz-reply>
+    </ng-container>
+    <div class ="button-odpowiedz">
+      <button  *ngIf = "!k.show" (click) = "k.show = true">Odpowiedz</button>
+    </div>
+  </ul>
+</ng-container>

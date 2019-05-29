@@ -1,0 +1,10 @@
+<ng-container >
+<button class ="waves light" mdbWavesEffec (click)="upVote(docId)"
+  [ngClass]="{clicked: upVoteButton }"><i class="fas fa-arrow-up" ></i>
+  </button>
+</ng-container>
+
+<ng-container >
+<button class = "waves light" mdbWavesEffect (click)="downVote(docId)"
+  [ngClass]="{clicked: downVoteButton }"><i class="fas fa-arrow-down"></i> </button>
+</ng-container>

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/authentication/auth.service';
+import { keyframes } from '@angular/animations';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 @Component({
   selector: 'app-komentarz-reply',
@@ -12,7 +14,9 @@ export class KomentarzReplyComponent implements OnInit {
   wiadomosc: string;
   @Input() komId;
   @Input() memId;
+  @Input() replyId;
   awatar;
+  show = false;
 
   constructor(public db: AngularFirestore, public ats: AuthService) {
   }
@@ -23,6 +27,8 @@ export class KomentarzReplyComponent implements OnInit {
     });
   }
   public dodajKomentarz(memId){
+    const empty = this.wiadomosc;
+    if (this.wiadomosc.length >= 5){
     this.db.collection('users').doc(this.ats.userData.uid).ref.get().then(value => {
       const data = value.data();
       this.db.collection('memy').doc(memId).collection('komentarze')
@@ -30,9 +36,13 @@ export class KomentarzReplyComponent implements OnInit {
       collection('komentarze').add({
         awatar: data.photoURL,
         user: data.displayName,
-        wiadomosc: this.wiadomosc,
+        wiadomosc: empty,
+        data: new Date()
       });
     });
+    this.wiadomosc = null;
   }
+}
+
 
 }

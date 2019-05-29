@@ -16,9 +16,8 @@ import { map } from 'rxjs/operators';
 export class SingleMemComponent implements OnInit {
   memObserv: Observable<any[]>;
   docId;
-  upVoteButton = this.m.upVoteButton;
-  downVoteButton = this.m.downVoteButton;
-
+  upVoteButton;
+  downVoteButton;
   constructor(public asf: FireStoreServicesService, public m: MemComponent,
               public ats: AuthService, private route: ActivatedRoute, private db: AngularFirestore) {
 
@@ -30,7 +29,6 @@ export class SingleMemComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
   public upVote(id, ocena) {
 

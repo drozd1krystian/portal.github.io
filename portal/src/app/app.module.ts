@@ -43,6 +43,8 @@ import { ZarzadzanieUseramiComponent } from './components/administrator/zarzadza
 import { WstawKomentarzComponent } from './components/wstaw-komentarz/wstaw-komentarz.component';
 import { KomentarzeComponent } from './components/komentarze/komentarze.component';
 import { KomentarzReplyComponent } from './components/komentarz-reply/komentarz-reply.component';
+import { KomentarzOdpowiedziComponent } from './components/komentarz-odpowiedzi/komentarz-odpowiedzi.component';
+import { VoteButtonsComponent } from './components/vote-buttons/vote-buttons.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { KomentarzReplyComponent } from './components/komentarz-reply/komentarz-
     WstawKomentarzComponent,
     KomentarzeComponent,
     KomentarzReplyComponent,
+    KomentarzOdpowiedziComponent,
+    VoteButtonsComponent,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   imports: [
