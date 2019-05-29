@@ -21,10 +21,13 @@ export class KomentarzReplyComponent implements OnInit {
   constructor(public db: AngularFirestore, public ats: AuthService) {
   }
   ngOnInit() {
-    this.db.collection('users').doc(this.ats.userData.uid).ref.get().then(value => {
-      const data = value.data();
-      this.awatar = data.photoURL;
-    });
+    if (this.ats.userData != null){
+      this.db.collection('users').doc(this.ats.userData.uid).ref.get().then(value => {
+        const data = value.data();
+        this.awatar = data.photoURL;
+      });
+    }
+
   }
   public dodajKomentarz(memId){
     const empty = this.wiadomosc;
