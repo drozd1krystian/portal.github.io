@@ -3,14 +3,11 @@
   <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark blue lighten-1 sticky-top scrolling-navbar"
     [containerInside]="false">
     <!-- Navbar brand -->
-    <mdb-navbar-brand><a class="navbar-brand" href="">Portal</a></mdb-navbar-brand>
+    <mdb-navbar-brand><a class="navbar-brand" href="">Memesite</a></mdb-navbar-brand>
     <links>
       <!-- LINKS-->
       <ul class="navbar-nav  mr-auto">
-        <li class="nav-item active">
-          <a [routerLink]="['']"
-          routerLinkActive="router-link-active" class="nav-link waves light" mdbWavesEffect>Strona głowna <span class="sr-only">(current)</span></a>
-        </li>
+
         <li class="nav-item">
           <a *ngIf="!authService.userData" [routerLink]="['/login']" routerLinkActive="router-link-active"
             class="nav-link waves light" mdbWavesEffect>Zaloguj się</a>

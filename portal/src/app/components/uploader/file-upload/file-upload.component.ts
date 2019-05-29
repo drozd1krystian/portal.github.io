@@ -5,6 +5,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { finalize, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/authentication/auth.service';
 import { Router } from '@angular/router';
+import { FireStoreServicesService } from 'src/app/services/fire-store-services.service';
+import { User } from 'src/app/services/authentication/user';
 
 
 
@@ -34,7 +36,7 @@ export class FileUploadComponent {
   isHovering: boolean;
 
 
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private authService: AuthService, private router: Router) {
+  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private authService: AuthService, private router: Router, public ffs: FireStoreServicesService) {
 
   }
 
@@ -145,7 +147,6 @@ console.log("status czyAwatar = "+this.czyAwatar);
             tworca: this.authService.userData.displayName,
             dataDodania: new Date(),
             awatarTworcy: this.authService.userData.photoURL
-
           }).then(value => {
             window.alert('Upload zakończony sukcesem!');
             this.router.navigate(['/']);
@@ -164,5 +165,7 @@ console.log("status czyAwatar = "+this.czyAwatar);
   isActive(snapshot) {
     return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
   }
+
+
 
 }

@@ -15,7 +15,7 @@ import { SignUpComponent } from '../components/authentication/sign-up/sign-up.co
 import { ForgotPasswordComponent } from '../components/authentication/forgot-password/forgot-password.component';
 import { UserProfileComponent } from '../components/user-profile/user-profile.component';
 import { AuthGuardService } from '../services/authorization/auth.guard.service';
-import { SekcjaAdminComponent } from '../components/administrator/sekcja-admin/sekcja-admin.component';
+import { ZarzadzanieUseramiComponent } from '../components/administrator/zarzadzanie-userami/zarzadzanie-userami.component';
 
 
 const routes: Routes = [
@@ -34,8 +34,8 @@ const routes: Routes = [
   { path: 'polityka', component: PolitykaComponent},
   { path: 'zwierzeta', component: SekcjaZwierzetaComponent},
   { path: 'mem/:id', component: SingleMemComponent},
-  { path: 'admin', component: SekcjaAdminComponent}
-  //{ path: 'admin/zarzadzanieUserami', component: }
+  { path: 'admin', component: ZarzadzanieUseramiComponent}
+
 ];
 
 @NgModule({

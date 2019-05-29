@@ -1,3 +1,11 @@
-<p>
-  zarzadzanie-userami works!
-</p>
+<center><img src="https://media2.giphy.com/media/dvOwFmfbzmAsI9v2IV/giphy.gif"> </center>
+<table class="table  table-hover">
+<td class="pogrub">nick</td> <td class="pogrub">email</td><td class="pogrub">zweryfikowany</td><td class="pogrub">ban</td>
+<tr *ngFor="let user of userzyZbazy | async as users; index as i; first as isFirst">
+<td> {{user.displayName}}</td>
+<td>{{user.email}}</td>
+<td>{{user.emailVerified}}</td>
+
+<td><button *ngIf="user.email!='admin@admin.admin'" class="btn-danger" mdbWavesEffec (click)="ban(user.uid)"> BAN </button></td>
+
+</table>

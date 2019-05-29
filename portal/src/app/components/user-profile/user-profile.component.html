@@ -17,8 +17,8 @@
 
             <p>User ID: <strong>{{userPojedynczy[0].uid}}</strong></p>
             <p>Email: <strong>{{userPojedynczy[0].email}}</strong></p>
-            <p *ngIf="this.authService.zalogowanyPrzez!='facebook.com'||'google.com'">Email niezwerfikowany</p>
-            <button *ngIf="this.authService.zalogowanyPrzez!='facebook.com'||'google.com'" type="button" mdbBtn color="info" class="dark blue lighten-1"
+            <p *ngIf="this.authService.zalogowanyPrzez=='password'">Email niezwerfikowany</p>
+            <button *ngIf="this.authService.zalogowanyPrzez=='password'" type="button" mdbBtn color="info" class="dark blue lighten-1"
             (click)="this.authService.SendVerificationMail()">
               Zweryfikuj e-mail
             </button>
@@ -26,7 +26,7 @@
               Zmień nick
             </button>
 
-            <button *ngIf="this.authService.zalogowanyPrzez!='facebook.com'||'google.com'" type="button" mdbBtn color="info" class="dark blue lighten-1" [routerLink]="['/forgotPassword']">
+            <button *ngIf="this.authService.zalogowanyPrzez=='password'" type="button" mdbBtn color="info" class="dark blue lighten-1" [routerLink]="['/forgotPassword']">
               Zmień hasło
             </button>
 

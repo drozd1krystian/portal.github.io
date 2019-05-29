@@ -1,7 +1,7 @@
 import { MidColumnComponent } from './../components/mid-column/mid-column.component';
-import { AngularFirestore} from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import {map, tap, } from 'rxjs/operators';
+import { map, tap, } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { Observable, BehaviorSubject } from 'rxjs';
 
@@ -27,17 +27,17 @@ export class FireStoreServicesService {
         });
       }));
     return memy;
-    }
+  }
 
   public getDocId(link) {
     const docId = this.db.collection('memy', ref => ref.where('link', '==', link).limit(1)).snapshotChanges()
-    .pipe(map(actions =>{
-      return actions.map(a => {
-        const id = a.payload.doc.id;
-        const data = a.payload.doc.data();
-        return {id, ...data};
-      });
-    }));
+      .pipe(map(actions => {
+        return actions.map(a => {
+          const id = a.payload.doc.id;
+          const data = a.payload.doc.data();
+          return { id, ...data };
+        });
+      }));
     return docId;
   }
 
@@ -81,7 +81,7 @@ export class FireStoreServicesService {
           return arr.reduce((acc, cur) => {
             const id = cur.payload.doc.id;
             const data = cur.payload.doc.data();
-            return {...acc, [id]: data};
+            return { ...acc, [id]: data };
           }, {});
         })
       );
@@ -102,12 +102,12 @@ export class FireStoreServicesService {
           return arr.reduce((acc, cur) => {
             const id = cur.payload.doc.id;
             const data = cur.payload.doc.data();
-            return {...acc, [id]: data};
+            return { ...acc, [id]: data };
           }, {});
         })
       );
   }
-  returnTheEnd(){
+  returnTheEnd() {
     return this.theEnd;
   }
   itemSort(a, b) {
@@ -117,7 +117,7 @@ export class FireStoreServicesService {
       return -1;
     }
     return 0;
- }
+  }
 
   // wszyscy uzytkownicy -adminmode
   public getUsers() {
@@ -131,5 +131,13 @@ export class FireStoreServicesService {
       }));
     return userzy;
   }
+
+  public zwrocAwatar(id: string) {
+
+    this.db.collection('users').doc(id).ref.get().then(value => {
+      const data = value.data();
+      return data.photoURL;
+    });
+}
 }
 

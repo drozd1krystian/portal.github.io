@@ -38,8 +38,6 @@ import { SekcjaNajlepszeComponent } from './components/sekcja-najlepsze/sekcja-n
 import { SekcjaNajnowszeComponent } from './components/sekcja-najnowsze/sekcja-najnowsze.component';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import {AuthGuardService} from './services/authorization/auth.guard.service';
-import { SekcjaAdminComponent } from './components/administrator/sekcja-admin/sekcja-admin.component';
-import { PrzegladMemowComponent } from './components/administrator/przeglad-memow/przeglad-memow.component';
 import { SingleMemComponent } from './components/single-mem/single-mem.component';
 import { ZarzadzanieUseramiComponent } from './components/administrator/zarzadzanie-userami/zarzadzanie-userami.component';
 import { WstawKomentarzComponent } from './components/wstaw-komentarz/wstaw-komentarz.component';
@@ -71,8 +69,6 @@ import { VoteButtonsComponent } from './components/vote-buttons/vote-buttons.com
     SekcjaNiesmieszneComponent,
     SekcjaNajlepszeComponent,
     SekcjaNajnowszeComponent,
-    SekcjaAdminComponent,
-    PrzegladMemowComponent,
     SingleMemComponent,
     ZarzadzanieUseramiComponent,
     WstawKomentarzComponent,
