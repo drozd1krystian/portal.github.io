@@ -7,24 +7,21 @@
       <br>
       <span class = "tytul"><strong> {{singleMem[0].tytul}} </strong></span>
       <div class ="buttons">
-        <button class ="waves light" mdbWavesEffec (click)="upVote(docId,singleMem[0].ocena)"
-            [ngClass]="{clicked: upVoteButton }">
-            <i class="fas fa-arrow-up" ></i>
-        </button>
-        <button class = "waves light" mdbWavesEffect (click)="downVote(docId, singleMem[0].ocena)"
-          [ngClass]="{clicked: downVoteButton }">
-          <i class="fas fa-arrow-down"></i>
-        </button>
+        <ng-container *ngIf = "this.ats.userData">
+        <app-vote-buttons [docId]="docId" [memOcena]="singleMem[0].ocena"> </app-vote-buttons>
+        </ng-container>
         <span >{{singleMem[0].ocena}} punktów</span>
         <fb-like url={{singleMem[0].link}} class ="facebook"></fb-like>
         <tweet url="{{singleMem[0].link}}" class ="twitter" text="Najlepszy mem!"></tweet>
       </div>
     </div>
-
       <div class ="post" [style.height.px]="[m.getSize(singleMem[0].link)]">
         <img src = {{singleMem[0].link}} alt ="">
       </div>
-      <app-wstaw-komentarz [memId]="singleMem[0].id"></app-wstaw-komentarz>
+      <ng-container *ngIf = "this.ats.userData">
+        <app-wstaw-komentarz [memId]="singleMem[0].id"></app-wstaw-komentarz>
+      </ng-container>
+      <p class ="p"> Komentarze</p>
       <app-komentarze [memId]="singleMem[0].id"></app-komentarze>
   </div>
 </ng-container>

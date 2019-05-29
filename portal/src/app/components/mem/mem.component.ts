@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/authentication/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FireStoreServicesService } from './../../services/fire-store-services.service';
 import { Component, OnInit, Input} from '@angular/core';
@@ -17,10 +18,9 @@ export class MemComponent implements OnInit{
   @Input() autorAvatar: string;
   @Input() awatarTworcy: string;
   docId: any;
-
   upVoteButton: boolean;
   downVoteButton = null;
-  constructor(public asf: FireStoreServicesService, private db: AngularFirestore) {
+  constructor(public asf: FireStoreServicesService, private db: AngularFirestore, public ats: AuthService) {
    }
 
   ngOnInit() {

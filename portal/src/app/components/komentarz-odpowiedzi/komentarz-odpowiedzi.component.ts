@@ -15,13 +15,17 @@ export class KomentarzOdpowiedziComponent implements OnInit {
   @Input() komId:string;
   komentarze: Observable<any[]>;
   showReply = false;
-
+  user;
   constructor(public asf: FireStoreServicesService,public ats: AuthService, private db: AngularFirestore){
   }
 
 
   ngOnInit() {
     this.pobierzeKomentarze();
+    this.db.collection('users').doc(this.ats.userData.uid).ref.get().then(value => {
+      const data = value.data();
+      this.user = data.displayName;
+    });
   }
 
   public pobierzeKomentarze(){
@@ -40,6 +44,10 @@ export class KomentarzOdpowiedziComponent implements OnInit {
   }
   trackByIdx(i){
     return i;
+  }
+  public usunKomentarz(memId, komId,replyId) {
+    this.db.collection('memy').doc(memId).collection('komentarze')
+    .doc(komId).collection('komentarze').doc(replyId).delete();
   }
 
 }

@@ -22,15 +22,19 @@ export class WstawKomentarzComponent implements OnInit {
     });
   }
   public dodajKomentarz(memId){
+    const empty = this.wiadomosc;
+    if (this.wiadomosc.length >=5){
     this.db.collection('users').doc(this.ats.userData.uid).ref.get().then(value => {
       const data = value.data();
       this.db.collection('memy').doc(memId).collection('komentarze').add({
         odpowiedzi: false,
         awatar: data.photoURL,
         user: data.displayName,
-        wiadomosc: this.wiadomosc,
+        wiadomosc: empty,
         data: new Date()
       });
     });
+    this.wiadomosc = null;
   }
+ }
 }
