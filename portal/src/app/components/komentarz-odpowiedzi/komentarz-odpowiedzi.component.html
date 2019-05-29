@@ -19,8 +19,10 @@
     <ng-container *ngIf= "k.show">
      <app-komentarz-reply [memId]="memId" [komId] ="komId" ></app-komentarz-reply>
     </ng-container>
-    <div class ="button-odpowiedz">
-      <button  *ngIf = "!k.show" (click) = "k.show = true">Odpowiedz</button>
+    <div class ="button-odpowiedz" >
+      <ng-container *ngIf ="this.ats.userData">
+          <button  *ngIf = "!k.show && this.ats.userData" (click) = "k.show = true">Odpowiedz</button>
+      </ng-container>
     </div>
   </ul>
 </ng-container>
