@@ -13,7 +13,9 @@
   </div>
   <div class ="buttons" >
     <p>{{memOcena}} punktów</p>
+    <ng-container *ngIf = "user">
     <app-vote-buttons [docId]="doc[0].id" [memOcena]="memOcena"> </app-vote-buttons>
+    </ng-container>
     <button class = "waves light" [routerLink]="['/mem', doc[0].id]" mdbWavesEffect><i class="far fa-comment-dots"></i></button>
     <fb-like url={{memLink}} class ="facebook"></fb-like>
     <tweet url="{{memLink}}" class ="twitter" text="Najlepszy mem!"></tweet>
